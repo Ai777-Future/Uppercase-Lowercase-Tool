@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <section class="hero-counselor">
+  <div class="hero-card">
+    <div class="hero-left">
+      <img src="https://res.cloudinary.com/dqtmwki9i/image/fetch/https://project-alpine.com/assets/bb3761ff-30b4-4276-9e2b-63e567d9570b?width=1000&height=523" alt="Counselor Image" />
+    </div>
+    <div class="hero-right">
+      <h1>Your Mental Wellness Matters</h1>
+      <p>Speak privately with certified counselors who truly care. Empower your mind and take the first step toward healing and clarity.</p>
+      <a href="#" class="hero-btn">Start Your Journey</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero-counselor {
+  background: radial-gradient(circle at top left, #fdfbfb, #ebedee);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-card {
+  max-width: 1200px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-left {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.hero-left img {
+  max-width: 300px;
+  width: 100%;
+  animation: bounce 3s infinite;
+  border-radius: 30%;
+}
+
+.hero-right {
+  flex: 1 1 500px;
+}
+
+.hero-right h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2e3a59;
+  margin-bottom: 20px;
+}
+
+.hero-right p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  padding: 14px 30px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 5px 20px rgba(101, 121, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(101, 121, 255, 0.6);
+}
+
+/* Floating Animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-right h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-right p {
+    font-size: 1rem;
+  }
+}
+</style>
+
+</body>
+</html>

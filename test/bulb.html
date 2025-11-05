@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            border: 1px solid #000;
+            background-color: gray;
+            margin: 50px;
+            padding: 150px;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .cont{
+            border: 1px solid black;
+            padding: 20px;
+        }
+        button{
+            padding: 10px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box">hi i am a bulb</div>
+        <button class="ON">On</button>
+        <button class="OFF">Off</button>
+    </div>
+
+    <script>
+        const bulb = document.querySelector(".box");
+        const onBtn = document.querySelector(".ON");
+        const offBtn = document.querySelector(".OFF");
+
+        onBtn.onclick = function(){
+            bulb.style.backgroundColor = "yellow";
+        }
+
+        offBtn.onclick = function(){
+            bulb.style.backgroundColor = "gray";
+        }
+    </script>
+</body>
+</html>

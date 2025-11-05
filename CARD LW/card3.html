@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative LectureWala Card</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to right, #f9f9f9, #e0eafc);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .product-card {
+      width: 350px;
+      height: 460px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .product-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      position: absolute;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-front {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .card-front h2 {
+      margin: 15px 0 5px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .card-front p {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, #1f1c2c, #0a0332);
+      color: white;
+      transform: rotateY(180deg);
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-back h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card-back ul {
+      list-style: none;
+    }
+
+    .card-back ul li {
+      margin: 8px 0;
+      font-size: 15px;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .card-back ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #ffc107;
+      font-size: 14px;
+    }
+
+    .buy-section {
+      text-align: center;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffc107;
+      margin-bottom: 10px;
+    }
+
+    .buy-btn {
+      padding: 10px 25px;
+      background-color: #ffc107;
+      color: #1f1c2c;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background-color: #e0a800;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="product-card">
+    <div class="card-inner">
+      <!-- Front Side -->
+      <div class="card-front">
+        <img src="/testing/MORDEN SEO TOOL/IMG/CA-Bhanwar-Borana.jpg" alt="CA Bhanwar Borana">
+        <h2>CA Final - Direct Tax</h2>
+        <p>By CA Bhanwar Borana<br>Latest ICAI Syllabus | High-Quality Lectures</p>
+      </div>
+
+      <!-- Back Side -->
+      <div class="card-back">
+        <div>
+          <h3>Course Highlights</h3>
+          <ul>
+            <li>2 Views</li>
+            <li>09 Month Validity</li>
+            <li>Full English Language</li>
+            <li>Live Batch</li>
+            <li>Attempt: Sep 25</li>
+          </ul>
+        </div>
+        <div class="buy-section">
+          <div class="price">₹6,999</div>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

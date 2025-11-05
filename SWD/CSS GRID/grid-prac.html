@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <style>
+        body {
+     display: grid;
+      grid-template-areas:
+        "header header header"
+        "menu main ad"
+        "ad2 main ad"
+        "footer footer footer";
+     grid-template-columns: 1fr 2fr 1fr;
+     grid-template-rows: auto 1fr 1fr auto;
+     height: 100vh;
+     gap: 10px;
+
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+
+
+        }
+
+        .item-1 {
+            grid-area: header;
+            background-color: #335CB4;
+
+        }
+
+        .item-2 {
+            grid-area: menu;
+            background-color: #6781BC;
+            margin: 15px;
+
+        }
+
+        .item-3 {
+            grid-area: main;
+            background-color: #6781BC;
+            margin: 15px;
+
+        }
+
+        .item-4 {
+            grid-area: ad;
+            background-color: #6781BC;
+            margin: 15px;
+
+        }
+
+        .item-5 {
+            grid-area: ad2;
+            background-color: #6781BC;
+            margin: 15px;
+
+        }
+
+        .item-6 {
+            grid-area: footer;
+            background-color: #335CB4;
+            margin: 15px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item item-1">Header</div>
+    <div class="item item-2">Menu</div>
+    <div class="item item-3">Main</div>
+    <div class="item item-4">Ad1</div>
+    <div class="item item-5">Ad2</div>
+    <div class="item item-6">Footer</div>
+
+</body>
+
+</html>

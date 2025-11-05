@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Governance Section</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9ff;
+    padding: 40px;
+  }
+
+  .Governace {
+    background: #6c63ff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.4s;
+  }
+
+  .accordion:hover {
+    background: #5a54e3;
+  }
+
+  .panel {
+    padding: 0 15px;
+    display: none;
+    background-color: #f1f1ff;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+
+  .sub-Governace {
+    background: #8b83ff;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    width: 95%;
+    margin: 10px auto;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+
+  .sub-Governace:hover {
+    background: #7a72f2;
+  }
+
+  .sub-panel {
+    display: none;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px;
+  }
+
+  .download-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+  }
+
+  .download-btn {
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  /* Board Member Cards */
+  .board-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .board-card {
+    background: linear-gradient(90deg, #d7c4f3, #c8b6f8);
+    width: 30%;
+    border-radius: 12px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* Committee Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background: #d7c4f3;
+  }
+</style>
+</head>
+<body>
+
+<button class="accordion Governace">Governance</button>
+<div class="panel">
+
+  <button class="sub-accordion sub-Governace">ANP Policies</button>
+  <div class="sub-panel">
+    <div class="download-item">
+      <span>Policy Document 1</span>
+      <button class="download-btn">Download</button>
+    </div>
+    <div class="download-item">
+      <span>Policy Document 2</span>
+      <button class="download-btn">Download</button>
+    </div>
+  </div>
+
+  <button class="sub-accordion">AGM</button>
+  <div class="sub-panel">
+    <div class="download-item">
+      <span>AGM Report 2024</span>
+      <button class="download-btn">Download</button>
+    </div>
+  </div>
+
+  <button class="sub-accordion sub-Governace">Board Members</button>
+  <div class="sub-panel">
+    <div class="board-container">
+      <div class="board-card">
+        <h4>Mr. Jatinder Dev Seth</h4>
+        <p>Managing Director</p>
+      </div>
+      <div class="board-card">
+        <h4>Ms. Bhawna Seth</h4>
+        <p>Whole Time Director</p>
+      </div>
+      <div class="board-card">
+        <h4>Mr. Niraj Rajpal</h4>
+        <p>Non Executive Director</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="sub-accordion">Committee Members</button>
+  <div class="sub-panel">
+    <table>
+      <tr>
+        <th>Committee</th>
+        <th>Member 1</th>
+        <th>Member 2</th>
+        <th>Member 3</th>
+        <th>Chairman</th>
+        <th>Remarks</th>
+      </tr>
+      <tr>
+        <td>CSR Committee</td>
+        <td>Mr. Vishal Sharma</td>
+        <td>Mr. Jatinder Dev Seth</td>
+        <td>Ms. Bhawna Seth</td>
+        <td>Mr. Vishal Sharma</td>
+        <td>-</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.Governace').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      let panel = this.nextElementSibling;
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
+    });
+  });
+
+  document.querySelectorAll('.sub-Governace').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      let subPanel = this.nextElementSibling;
+      subPanel.style.display = subPanel.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>
+
+</body>
+</html>

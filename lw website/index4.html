@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturewala Home Page</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('https://media.istockphoto.com/id/534683931/vector/abstract-background.jpg?s=612x612&w=0&k=20&c=0p0iw34kVQJyU08Bbc_qFFCduJ9oc0EQ5YWl8uyZ_MA='); 
+  background-size: cover;
+  background-position: center; 
+  padding: 10px 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-image: url('https://img.freepik.com/premium-vector/dark-violet-abstract-background-with-serpentine-style-lines-as-main-component_49459-802.jpg'); 
+  /* background-size: cover; Cover the entire nav bar */
+  /* background-position: center; Center the image */ 
+  background-color: #000000;
+  padding: 10px 20px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0; 
+  padding: 0;
+}
+
+.nav-links li {
+  color: white;
+  margin: 0 15px; 
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px 0 0 5px; 
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icons i {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 400px;
+}
+
+.details {
+  background-color: #f8f9fa;
+  color: #333;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.shop-by-category {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.shop-by-category h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.categories-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.category {
+  margin: 10px;
+  text-align: center;
+}
+
+.category-border {
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  background-image: url('https://smartlearningdestination.com/footer-bg-reduced.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.category-border:hover {
+  background-image: url('https://smartlearningdestination.com/footer-bg-reduced.webp');
+  color: white;
+  font-weight: 900;
+  padding: 30px;
+  border-radius: 50%;
+}
+
+.category-border:active {
+  color: white;
+  background-color: #003366;
+}
+
+.footer {
+  background-image: url('https://media.istockphoto.com/id/534683931/vector/abstract-background.jpg?s=612x612&w=0&k=20&c=0p0iw34kVQJyU08Bbc_qFFCduJ9oc0EQ5YWl8uyZ_MA=');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  color: #000000;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+}
+
+.review {
+  display: flex;
+  align-items: center;
+}
+
+.review img {
+  width: 50px;
+  margin-right: 10px;
+  padding: 20px;
+}
+
+
+#stu{
+  margin-top: 60px;
+}
+.stu-card{
+  margin: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border-style: groove;
+  text-align: center;
+  
+}
+.student{
+  font-size: 15px;
+  margin: 20px;
+}
+.course-list {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.course-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 3px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+/* Basic Review Slider Styles */
+.review-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  width: 1000px;
+  margin: 20px;
+  margin-left: 250px;
+}
+
+.review-slider {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.review-card {
+  min-width: 300px;
+  padding: 20px;
+  background: #fff;
+  border: black;
+  
+  margin-right: 10px;
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.337);
+}
+
+.review-card h2 {
+  margin-top: 10px;
+}
+
+.review-card button {
+  background-color: #0a00669a;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 100px;
+}
+
+.review-card button:hover {
+  background-color: #6e6d717e;
+}
+
+.read-more-btn {
+  background-color: #1f00665d;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.read-more-btn:hover {
+  background-color: #290066cf;
+}
+
+.review-preview {
+  display: -webkit-box;
+  width: 230px;
+  margin-left:   10px;
+  -webkit-line-clamp: 3; /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center  ;
+}
+
+.full-review {
+  display: none;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+  
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Navigation Buttons */
+.slider-nav-button {
+  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #251c746b;
+  color: rgba(249, 245, 245, 0.844);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  
+}
+
+
+.slider-nav-button.left {
+  left: 2px;
+  
+}
+
+.slider-nav-button.right {
+  right: 2px;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>Lecturewala</h1>
+        </div>
+        <div class="icons">
+            <span class="profile-icon">
+                <i class="fas fa-user"></i> 
+            </span>
+            <span class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> 
+            </span>
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li>Home</li>
+            <li>Faculty</li>
+            <li>Syllabus</li>
+            <li>Courses</li>
+            <li>Offers</li>
+            <li>More</li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+        </div>
+    </nav>
+    <section class="banner">
+        <img src="https://thecareerism.com/wp-content/uploads/2024/10/CA-CS-and-CMA.png" alt="Lecturewala Banner">
+    </section>
+    <div class="details">
+        🚚 Super Fast Delivery | 50000+ Happy Deliveries. All courses available at best price | Offer up to 50% Off
+    </div>
+    <section class="shop-by-category">
+        <h2>____ Shop by Category ____</h2>
+        
+        <div class="categories-container">
+            <div class="category">
+                <div class="category-border">
+                    <h3>CA Classes</h3>
+                </div>
+                <p>CA Classes Online</p>
+            </div>
+    
+            <div class="category">
+                <div class="category-border">
+                    <h3>CS Classes</h3>
+                </div>
+                <p>CS Classes Online</p>
+            </div>
+    
+            <div class="category">
+                <div class="category-border">
+                    <h3>CMA Classes</h3>
+                </div>
+                <p>CMA Classes Online</p>
+            </div>
+    
+            <div class="category">
+                <div class="category-border">
+                    <h3>Global Courses</h3>
+                </div>
+                <p>Global Courses</p>
+            </div>
+    
+            <div class="category">
+                <div class="category-border">
+                    <h3>Other Courses</h3>
+                </div>
+                <p>Other Courses</p>
+            </div>
+    
+            <div class="category">
+                <div class="category-border">
+                    <h3>Books & Test Series</h3>
+                </div>
+                <p>Books & Test Series</p>
+            </div>
+        </div>
+        <div class="stu-reviews">
+        <h1 id="stu">What Our Students Say...!</h1>
+
+        <!-- Review Slider with Navigation Buttons -->
+        <div class="review-slider-container">
+            <div class="review-slider">
+                <div class="review-card">
+                    <div class="review-preview">
+                        Lecturewala is a one-stop solution for CA lectures! Very reliable and helpful. The courses are comprehensive, and the platform offers excellent study material. I highly recommend it...
+                    </div>
+                    <div class="full-review">
+                        Lecturewala is a one-stop solution for CA lectures! Very reliable and helpful. The courses are comprehensive, and the platform offers excellent study material. I highly recommend it to all students pursuing CA. I was able to clear all my subjects with ease thanks to their structured content. Their customer support is also quick and responsive. The platform keeps updating with new courses and materials. I was extremely satisfied with the service, and I recommend it to every student preparing for CA exams.
+                    </div>
+                    <button class="read-more-btn" data-review="Lecturewala is a one-stop solution for CA lectures! Very reliable and helpful. The courses are comprehensive, and the platform offers excellent study material. I highly recommend it to all students pursuing CA. I was able to clear all my subjects with ease thanks to their structured content. Their customer support is also quick and responsive. The platform keeps updating with new courses and materials. I was extremely satisfied with the service, and I recommend it to every student preparing for CA exams.">Read More</button>
+                </div>
+                <div class="review-card">
+                    <div class="review-preview">
+                        Great platform for CA students. Highly recommend it! The study material is very well-organized, and the support is always there when you need it...
+                    </div>
+                    <div class="full-review">
+                        Great platform for CA students. Highly recommend it! The study material is very well-organized, and the support is always there when you need it. I cleared my exams using their resources and found their interactive sessions extremely useful. The learning experience was seamless and engaging. I would suggest this platform to anyone preparing for CA exams. The material was updated regularly, and I could track my progress as I went along.
+                    </div>
+                    <button class="read-more-btn" data-review="Great platform for CA students. Highly recommend it! The study material is very well-organized, and the support is always there when you need it. I cleared my exams using their resources and found their interactive sessions extremely useful. The learning experience was seamless and engaging. I would suggest this platform to anyone preparing for CA exams. The material was updated regularly, and I could track my progress as I went along.">Read More</button>
+                </div>
+                <div class="review-card">
+                    <div class="review-preview">
+                        Lecturewala helped me pass my exams with ease! Excellent teaching materials. The platform was easy to navigate, and I could access everything I needed...
+                    </div>
+                    <div class="full-review">
+                        Lecturewala helped me pass my exams with ease! Excellent teaching materials. The platform was easy to navigate, and I could access everything I needed. I appreciated the structured approach to each subject. Their mock tests and practice papers were invaluable in preparing me for the exams. The entire process was smooth and I would highly recommend it to any student preparing for CA exams.
+                    </div>
+                    <button class="read-more-btn" data-review="Lecturewala helped me pass my exams with ease! Excellent teaching materials. The platform was easy to navigate, and I could access everything I needed. I appreciated the structured approach to each subject. Their mock tests and practice papers were invaluable in preparing me for the exams. The entire process was smooth and I would highly recommend it to any student preparing for CA exams.">Read More</button>
+                </div>
+                <div class="review-card">
+                    <div class="review-preview">
+                        Excellent CA platform with great materials. Highly recommended for all CA aspirants!
+                    </div>
+                    <div class="full-review">
+                        Excellent CA platform with great materials. Highly recommended for all CA aspirants! I found the study material to be very detailed and well-structured. The platform makes learning very convenient and interactive, which is great for busy students. I cleared my exams with the help of Lecturewala's resources. They are also very responsive and supportive when it comes to resolving queries.
+                        
+                        
+                      </div>
+                    <button class="read-more-btn" data-review="Excellent CA platform with great materials. Highly recommended for all CA aspirants! I found the study material to be very detailed and well-structured. The platform makes learning very convenient and interactive, which is great for busy students. I cleared my exams with the help of Lecturewala's resources. They are also very responsive and supportive when it comes to resolving queries.">Read More</button>
+                </div>
+                <div class="review-card">
+                  <div class="review-preview">
+                      Excellent CA platform with great materials. Highly recommended for all CA aspirants!
+                  </div>
+                  <div class="full-review">
+                      Excellent CA platform with great materials. Highly recommended for all CA aspirants! I found the study material to be very detailed and well-structured. The platform makes learning very convenient and interactive, which is great for busy students. I cleared my exams with the help of Lecturewala's resources. They are also very responsive and supportive when it comes to resolving queries.
+                      
+                      
+                    </div>
+                  <button class="read-more-btn" data-review="Excellent CA platform with great materials. Highly recommended for all CA aspirants! I found the study material to be very detailed and well-structured. The platform makes learning very convenient and interactive, which is great for busy students. I cleared my exams with the help of Lecturewala's resources. They are also very responsive and supportive when it comes to resolving queries.">Read More</button>
+              </div>
+              <div class="review-card">
+                <div class="review-preview">
+                    Excellent CA platform with great materials. Highly recommended for all CA aspirants!
+                </div>
+                <div class="full-review">
+                    Excellent CA platform with great materials. Highly recommended for all CA aspirants! I found the study material to be very detailed and well-structured. The platform makes learning very convenient and interactive, which is great for busy students. I cleared my exams with the help of Lecturewala's resources. They are also very responsive and supportive when it comes to resolving queries.
+                    
+                    
+                  </div>
+                <button class="read-more-btn" data-review="Excellent CA platform with great materials. Highly recommended for all CA aspirants! I found the study material to be very detailed and well-structured. The platform makes learning very convenient and interactive, which is great for busy students. I cleared my exams with the help of Lecturewala's resources. They are also very responsive and supportive when it comes to resolving queries.">Read More</button>
+            </div>
+            </div>
+
+            <!-- Slider Navigation Buttons -->
+            <button class="slider-nav-button left" id="prevBtn">❮</button>
+            <button class="slider-nav-button right" id="nextBtn">❯</button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Social Media Handles</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h3>About Company</h3>
+                <ul>
+                    <li><a href="#">Customer Testimonial</a></li>
+                    <li><a href="#">Shipping & Return</a></li>
+                    <li><a href="#">Conditions of Use</a></li>
+                    <li><a href="#">Free Mentoring</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Our Blogs</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>E-75 Kalpatru Shopping Center, Near ICAI Office, Shastri Nagar Jodhpur - 342003 Purchase Inquiry: 91-165-13707, 86-962-11007, 77-930-02007 Support: 89-057-73707, 86-904-51002 Purchase Inquiry (Email): info@lecturewala.com Support (Email): support@lecturewala.com</p>
+                <p>For Support Mail us on: <a href="mailto:support@lecturewala.in">support@lecturewala.in</a></p>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Get Latest Updates</h3>
+                <p>Subscribe now for our updates and newsletters</p>
+                <input type="email" placeholder="Your email address..." />
+                <button>Subscribe</button>
+                <p>Review us on</p>
+                <div class="review">
+                    <img src="" alt="Google Review" />
+                    <span>4.6 Stars</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Lecturewala. All rights reserved.</p>
+            <img src="" alt="Payment Methods" />
+        </div>
+    </footer>
+
+
+
+
+     <!-- Modal for Read More -->
+     <div id="reviewModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Review Details</h2>
+          <p id="fullReviewText"><h3 style="text-align: center;">- Sunny Sharma -</h3>
+      </div>
+  </div>
+
+  <script>
+      // Modal functionality
+      var modal = document.getElementById("reviewModal");
+      var closeBtn = document.getElementsByClassName("close")[0];
+
+      document.querySelectorAll('.read-more-btn').forEach(button => {
+          button.addEventListener('click', function() {
+              var reviewText = this.getAttribute('data-review');
+              document.getElementById("fullReviewText").textContent = reviewText;
+              modal.style.display = "block";
+          });
+      });
+
+      closeBtn.onclick = function() {
+          modal.style.display = "none";
+      };
+
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      };
+
+      // Slider functionality
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const slider = document.querySelector(".review-slider");
+
+let currentIndex = 0;
+const totalCards = document.querySelectorAll(".review-card").length;
+const cardsPerSlide = 1; // Number of cards to show per slide
+
+// Calculate the number of slides
+const totalSlides = Math.ceil(totalCards / cardsPerSlide);
+
+// Move the slider by shifting groups of 3 reviews
+function moveSlider() {
+    slider.style.transform = `translateX(-${currentIndex * (cardsPerSlide * (document.querySelector(".review-card").offsetWidth + 10))}px)`;
+}
+
+// Next button click
+nextBtn.addEventListener("click", function() {
+    if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+    } else {
+        currentIndex = 0; // loop back to first set of 3 reviews
+    }
+    moveSlider();
+});
+
+// Previous button click
+prevBtn.addEventListener("click", function() {
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = totalSlides - 1; // loop back to last set of 3 reviews
+    }
+    moveSlider();
+});
+
+      // Previous button click
+      prevBtn.addEventListener("click", function() {
+          if (currentIndex > 0) {
+              currentIndex--;
+          } else {
+              currentIndex = totalCards - 1; // loop back to last review
+          }
+          moveSlider();
+      });
+  </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Advanced Multi-Image OCR Tool</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background:#0f172a; color:#e2e8f0; margin:0; padding:20px;
+    }
+    h1 {margin-top:0; color:#38bdf8; font-size:22px;}
+    .dropzone {
+      border:2px dashed #38bdf8; border-radius:10px; padding:30px;
+      text-align:center; cursor:pointer; margin-bottom:20px;
+      transition:.2s;
+    }
+    .dropzone.dragover {background:#1e293b;}
+    .images {display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+    .card {
+      background:#1e293b; border-radius:8px; padding:12px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+    .card img {max-width:100%; border-radius:6px; margin-bottom:8px;}
+    .progress {height:6px; background:#334155; border-radius:999px; overflow:hidden; margin:6px 0;}
+    .progress i {display:block;height:100%;width:0%;background:#38bdf8;}
+    .result-block {margin-top:20px;}
+    textarea {
+      width:100%; min-height:180px; padding:10px;
+      background:#0f172a; color:#e2e8f0; border-radius:6px; border:1px solid #334155;
+      font-family:monospace; font-size:14px; resize:vertical;
+    }
+    .actions {margin-top:10px; display:flex; gap:10px;}
+    .btn {
+      background:#38bdf8; color:#0f172a; border:none; padding:8px 14px;
+      border-radius:6px; font-weight:600; cursor:pointer;
+    }
+    .btn.ghost {background:#1e293b; color:#94a3b8;}
+    .small {color:#94a3b8; font-size:12px;}
+  </style>
+</head>
+<body>
+  <h1>📑 Multi-Image OCR Tool</h1>
+  <div class="dropzone" id="dropzone">
+    <p><b>Click / Drop / Paste</b> multiple images here</p>
+    <p class="small">PNG, JPG, WebP supported</p>
+    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+  </div>
+
+  <div class="images" id="images"></div>
+
+  <div class="result-block">
+    <h2>📋 Combined Extracted Text</h2>
+    <textarea id="allText" placeholder="All OCR text will appear here..."></textarea>
+    <div class="actions">
+      <button class="btn" id="copyAll">Copy All</button>
+      <button class="btn" id="downloadAll">Download All</button>
+      <button class="btn ghost" id="clearAll">Clear</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const imagesDiv = document.getElementById('images');
+    const allTextArea = document.getElementById('allText');
+    const copyAllBtn = document.getElementById('copyAll');
+    const downloadAllBtn = document.getElementById('downloadAll');
+    const clearAllBtn = document.getElementById('clearAll');
+
+    let counter = 0;
+
+    function handleFiles(files) {
+      [...files].forEach(file => {
+        if (!file.type.startsWith("image/")) return;
+        const reader = new FileReader();
+        reader.onload = e => addImageCard(file.name, e.target.result);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function addImageCard(name, src) {
+      counter++;
+      const id = "img" + counter;
+      const card = document.createElement('div');
+      card.className = "card";
+      card.innerHTML = `
+        <strong>${counter}. ${name}</strong>
+        <img src="${src}" alt="">
+        <div class="progress"><i id="bar-${id}"></i></div>
+        <div class="small" id="status-${id}">Waiting...</div>
+        <textarea id="text-${id}" placeholder="Extracted text for this image..."></textarea>
+      `;
+      imagesDiv.appendChild(card);
+      runOCR(src, id, counter);
+    }
+
+    async function runOCR(src, id, num) {
+      const bar = document.getElementById('bar-'+id);
+      const status = document.getElementById('status-'+id);
+      const textArea = document.getElementById('text-'+id);
+
+      try {
+        const { data } = await Tesseract.recognize(src, 'eng', {
+          logger: m => {
+            if(m.status && m.progress!==undefined){
+              bar.style.width = Math.round(m.progress*100)+"%";
+              status.textContent = m.status+" "+Math.round(m.progress*100)+"%";
+            }
+          }
+        });
+        textArea.value = data.text.trim();
+        status.textContent = "Done ✓";
+
+        // Append to combined area
+        allTextArea.value += `\n\n[Image ${num}] ${data.text.trim()}`;
+      } catch(err) {
+        console.error(err);
+        status.textContent = "Error ❌";
+        textArea.value = "[OCR failed]";
+      }
+    }
+
+    // Drag-drop
+    dropzone.addEventListener("click", ()=> fileInput.click());
+    fileInput.addEventListener("change", e=> handleFiles(e.target.files));
+    dropzone.addEventListener("dragover", e=> {e.preventDefault(); dropzone.classList.add('dragover');});
+    dropzone.addEventListener("dragleave", ()=> dropzone.classList.remove('dragover'));
+    dropzone.addEventListener("drop", e=>{
+      e.preventDefault(); dropzone.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    // Paste
+    window.addEventListener("paste", e=>{
+      const items = e.clipboardData.items;
+      const files = [];
+      for (const it of items) if(it.type.startsWith("image/")) files.push(it.getAsFile());
+      if(files.length) handleFiles(files);
+    });
+
+    // Actions
+    copyAllBtn.addEventListener("click", async ()=>{
+      await navigator.clipboard.writeText(allTextArea.value);
+      copyAllBtn.textContent = "Copied ✓";
+      setTimeout(()=> copyAllBtn.textContent="Copy All", 1500);
+    });
+    downloadAllBtn.addEventListener("click", ()=>{
+      const blob = new Blob([allTextArea.value], {type:"text/plain"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "ocr-text.txt";
+      a.click();
+    });
+    clearAllBtn.addEventListener("click", ()=>{
+      imagesDiv.innerHTML="";
+      allTextArea.value="";
+      counter=0;
+    });
+  </script>
+</body>
+</html>

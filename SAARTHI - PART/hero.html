@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LW Saarthi - Emotional Wellness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* ==== PAGE WRAPPER ==== */
+        .lw-saarthi-page * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .lw-saarthi-page {
+            font-family: "Segoe UI", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fdfdfd;
+        }
+
+        .lw-saarthi-page h1,
+        .lw-saarthi-page h2,
+        .lw-saarthi-page h3 {
+            font-weight: 600;
+        }
+
+        /* ==== HEADER / HERO ==== */
+        .lw-saarthi-page .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            background: linear-gradient(270deg, rgb(251, 240, 206) 0%, rgb(230, 243, 240) 100%);
+        }
+
+        ;
+
+
+        .lw-saarthi-page .hero-text {
+            max-width: 50%;
+        }
+
+        .lw-saarthi-page .hero-text h1 {
+            font-size: 2.5em;
+
+            font-weight: 900;
+            background: url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyYWRpZW50JTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
+            background-position: center;
+            /* background-repeat: no-repeat; */
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .lw-saarthi-page .hero-text h2 {
+            font-size: 2.5em;
+
+            font-weight: 900;
+            background: url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyYWRpZW50JTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
+            background-position: center;
+            /* background-repeat: no-repeat; */
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 10px 0;
+        }
+
+        .lw-saarthi-page .hero-text p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .lw-saarthi-page .hero img {
+            max-width: 40%;
+        }
+
+        /* ==== INFO SECTION ==== */
+        .lw-saarthi-page .info {
+            padding: 60px 8%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .lw-saarthi-page .info p {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .lw-saarthi-page .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .lw-saarthi-page .card {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* ==== HELP SECTION ==== */
+        .lw-saarthi-page .help {
+            padding: 60px 8%;
+            background: linear-gradient(to right, #fafffd, #fff);
+            text-align: center;
+        }
+
+        .lw-saarthi-page .help h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .lw-saarthi-page .help-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .lw-saarthi-page .help-box {
+            background: #fff;
+            border: 1px solid #d9e6d9;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .lw-saarthi-page .help-box img {
+            width: 165px;
+            height: 165px;
+            margin-bottom: 12px;
+        }
+
+        .lw-saarthi-page .help-box p {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .lw-saarthi-page .help-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ==== CONTACT ==== */
+        .lw-saarthi-page .contact {
+            padding: 40px 8%;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .lw-saarthi-page .contact strong {
+            color: rgb(0, 0, 0);
+        }
+
+        /* ==== FOOTER ==== */
+        .lw-saarthi-page footer {
+            background: linear-gradient(270deg, rgb(251, 240, 206) 0%, rgb(230, 243, 240) 100%);
+            padding: 50px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .lw-saarthi-page footer span {
+            font-size: 100px;
+            font-weight: 900;
+            background: url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyYWRpZW50JTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
+            background-position: center;
+            /* background-repeat: no-repeat; */
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .lw-saarthi-page footer h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .lw-saarthi-page footer img {
+            border-radius: 8px;
+            animation: floatY 4s ease-in-out infinite;
+        }
+
+        @keyframes floatY {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .lw-saarthi-page footer small {
+            display: block;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .lw-saarthi-page .other-p {
+            font-weight: 900;
+        }
+
+        .lw-saarthi-page .other-p>span {
+            color: #e57373;
+        }
+
+        .lw-saarthi-page .imp-note {
+            font-weight: 600;
+            border: 1px solid;
+            padding: 12px;
+            background: linear-gradient(270deg, rgb(251, 240, 206) 0%, rgb(230, 243, 240) 100%);
+            border-radius: 20px;
+            word-wrap: break-word;
+        }
+
+        .lw-saarthi-page .note {
+            margin-top: 45px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .lw-saarthi-page footer .f-text {
+            font-size: 2.5em;
+
+            font-weight: 900;
+            background: url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyYWRpZW50JTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
+            background-position: center;
+            /* background-repeat: no-repeat; */
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+
+        }
+
+        /* ==== RESPONSIVE ==== */
+        @media (max-width: 1024px) {
+            .lw-saarthi-page .hero {
+                padding: 40px 5%;
+                flex-direction: row;
+            }
+
+            .lw-saarthi-page .hero-text {
+                max-width: 55%;
+            }
+
+            .lw-saarthi-page .hero img {
+                max-width: 40%;
+            }
+
+            /* Note Fix */
+            .lw-saarthi-page .note {
+                margin-top: 30px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .lw-saarthi-page .imp-note {
+                font-size: 0.95rem;
+                padding: 10px 15px;
+                max-width: 90%;
+                text-align: center;
+                line-height: 1.4;
+            }
+
+            .lw-saarthi-page footer img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lw-saarthi-page .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 5%;
+            }
+
+            .lw-saarthi-page .hero-text {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .lw-saarthi-page .hero img {
+                max-width: 80%;
+            }
+
+            /* Note Fix */
+            .lw-saarthi-page .note {
+                margin-top: 25px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .lw-saarthi-page .imp-note {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+                width: 100%;
+                max-width: 95%;
+                text-align: center;
+                border-radius: 10px;
+                line-height: 1.4;
+            }
+
+
+
+            .lw-saarthi-page footer img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .lw-saarthi-page .hero {
+                padding: 25px 4%;
+            }
+
+            .lw-saarthi-page .hero img {
+                max-width: 100%;
+            }
+
+            /* Note Fix */
+            .lw-saarthi-page .note {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .lw-saarthi-page .imp-note {
+                font-size: 0.85rem;
+                padding: 8px 10px;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 8px;
+                text-align: center;
+                line-height: 1.4;
+            }
+
+            .lw-saarthi-page .cards {
+                grid-template-columns: 1fr;
+
+            }
+
+            .cards .card {
+                display: flex;
+                align-items: center;
+                /* icon aur text ek line me aa jayenge */
+                gap: 10px;
+                /* icon aur text ke beech thoda space */
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .cards .card i {
+                color: #e53935;
+                /* red tone */
+                font-size: 1.4rem;
+                /* thoda bada icon */
+                flex-shrink: 0;
+                /* text ki wajah se icon shrink na ho */
+            }
+
+            .contact {
+                text-align: center;
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .contact i {
+                color: #e53935;
+                /* Red tone for icons */
+                margin-right: 6px;
+            }
+
+            .lw-saarthi-page footer img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lw-saarthi-page">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>LW Saarthi</h1>
+                <p>Supporting Your Journey To</p>
+                <h2>Emotional Wellness</h2>
+                <p>Need support with your emotional well-being? We are here for you.</p>
+            </div>
+            <img src="/CODE RAIN/imge banner/fnl-removebg-preview (1).png" alt="Illustration">
+        </section>
+
+        <!-- INFO SECTION -->
+        <section class="info">
+            <h2>Welcome to LW Saarthi</h2>
+            <p>Preparing for exams isn’t easy. LW Saarthi is about giving you the right support at the right time—so you
+                don’t feel stuck or alone in your journey.</p>
+
+            <div class="cards">
+                <div class="card"><i class="fa-regular fa-face-frown"></i> I’m feeling tense because my exams are near.
+                </div>
+                <div class="card"><i class="fa-regular fa-clock"></i> I’m not able to manage my time.</div>
+                <div class="card"><i class="fa-regular fa-eye-slash"></i> I keep getting distracted and falling behind.
+                </div>
+                <div class="card"><i class="fa-regular fa-face-tired"></i> The expectations are making me feel stressed.
+                </div>
+                <div class="card"><i class="fa-regular fa-face-sad-tear"></i> Because I didn’t do well in my exam, I’m
+                    finding it hard to focus on the next</div>
+                <div class="card"><i class="fa-regular fa-face-sad-cry"></i> Homesickness is making it hard for me to
+                    focus.</div>
+
+            </div>
+
+        </section>
+
+        <!-- HELP SECTION -->
+        <section class="help">
+            <h2>How Does LW Saarthi Help?</h2>
+            <p>Our counselors listen to you, understand your challenges, and provide simple, practical strategies that
+                actually work.</p>
+            <p class="other-p">Reach out to us at this number: <span>9116513707</span></p>
+
+            <div class="help-items">
+                <div class="help-box">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*rUUcI_DNQ0DJjm2_E8-LUw.jpeg" alt="Anxiety">
+                    <p>Stay focused and motivated</p>
+                </div>
+                <div class="help-box">
+                    <img src="https://i0.wp.com/img.freepik.com/free-vector/student-stress-concept-illustration_114360-8908.jpg?resize=390%2C260&ssl=1"
+                        alt="Panic">
+                    <p>Manage exam pressure and time effectively</p>
+                </div>
+                <div class="help-box">
+                    <img src="https://thumbs.dreamstime.com/b/breaking-alarm-clock-time-management-procrastination-new-beginnings-vector-design-generative-ai-symbolic-illustration-398238796.jpg"
+                        alt="Exam Stress">
+                    <p>Break through procrastination</p>
+                </div>
+                <div class="help-box">
+                    <img src="https://static.vecteezy.com/system/resources/previews/008/296/851/non_2x/concept-illustration-of-woman-questioned-thinking-and-confused-with-question-mark-looking-up-with-thoughtful-focused-expression-flat-cartoon-style-free-vector.jpg"
+                        alt="Self Doubt">
+                    <p>Build better study routines</p>
+                </div>
+                <div class="help-box">
+                    <img src="https://img.freepik.com/premium-vector/panic-disorder-concept-illustration_114360-21442.jpg"
+                        alt="Sadness">
+                    <p>Share your concerns without judgment</p>
+                </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact">
+            <p>Need support with your emotional well-being & studies? Reach out to us on:</p>
+
+            <p><strong><i class="fa-solid fa-phone"></i> +91 9116513707</strong></p>
+
+            <p>
+                <strong><i class="fa-solid fa-calendar-days"></i> Mon to Sat</strong> |
+                <strong><i class="fa-regular fa-clock"></i> 10:00 AM to 6:00 PM</strong>
+            </p>
+
+            <p>(Except on National Holidays)</p>
+
+            <div class="note">
+                <span class="imp-note">
+                    This service is for study-related and emotional support only. For course or platform queries, please
+                    use the regular contact channels.
+                </span>
+            </div>
+        </section>
+
+
+
+        <!-- FOOTER -->
+        <footer>
+            <div>
+                <!-- <h2>Prep without stress?</h2> -->
+                <b><span style="font-size: 2rem; ">Study Load ko handle krna ab easy hai <br> </span></b>
+                <span class="f-text"><b>
+                        "WITH SAARTHI"
+                    </b></span>
+                <small>*Disclaimer - Our counselors are not clinical psychologists,<br>
+                    but they are trained to support students with exam stress,<br>
+                    motivation, time management, and study-related challenges.</small>
+            </div>
+            <img src="/LW SAARTHI/assets/images/jhdgasjhdg-removebg-preview.png" alt="Student Success">
+        </footer>
+    </div>
+</body>
+
+</html>

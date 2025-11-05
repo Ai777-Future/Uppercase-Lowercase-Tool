@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accordion Governance Section</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .accordion {
+      width: 90%;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .accordion-header {
+      background: #5a4fcf;
+      color: white;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-header:hover {
+      background: #483fc0;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px 20px;
+      background: #f9f9f9;
+    }
+
+    .accordion-header.active + .accordion-content {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Sub Accordions (Governance inside) --- */
+    .sub-accordion-header {
+      background: #eee;
+      color: #333;
+      padding: 12px 20px;
+      cursor: pointer;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .sub-accordion-header:hover {
+      background: #ddd;
+    }
+
+    .sub-accordion-content {
+      display: none;
+      padding: 15px;
+      background: #fafafa;
+      border-radius: 10px;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    /* --- Purple Gradient Cards (Board Members) --- */
+    .member-card {
+      background: linear-gradient(135deg, #9b6cff, #6b35e2);
+      color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .member-name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .member-role {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* --- Committee Tables --- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: #5a4fcf;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="accordion">
+    <!-- Other Accordions -->
+    <div class="accordion-item">
+            <div class="accordion-header">Governance <span>+</span></div>
+            <div class="accordion-content">
+
+                <!-- ANP_POLICIES SIGN -->
+                <div class="sub-accordion accordion-item">
+                    <div class="accordion-header">ANP_POLICIES SIGN <span>+</span></div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>MEMORANDUM OF ASSOCIATION
+                                <a href="#" download><button>Download</button></a>
+                            </li>
+                            <li>Certificate-of-Incorporation.pdf
+                                <a href="#" download><button>Download</button></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- AGM -->
+                <div class="sub-accordion accordion-item">
+                    <div class="accordion-header">AGM <span>+</span></div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>ANP TECHNOLOGIES PRIVATE LIMITED_TPA_VS.pdf
+                                <a href="#" download><button>Download</button></a>
+                            </li>
+                            <li>RTA AGREEMENT.pdf
+                                <a href="#" download><button>Download</button></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+      <div class="accordion-content">
+        
+        <!-- Sub Accordion 1 -->
+        <div class="sub-accordion-header">Board Members <span>+</span></div>
+        <div class="sub-accordion-content">
+          <div class="member-card">
+            <div class="member-name">Mr. Jatinder Dev Seth</div>
+            <div class="member-role">Managing Director</div>
+          </div>
+          <div class="member-card">
+            <div class="member-name">Ms. Bhawna Seth</div>
+            <div class="member-role">Non-Executive Director</div>
+          </div>
+          <div class="member-card">
+            <div class="member-name">Mr. Nand Lal Sharma</div>
+            <div class="member-role">Independent Director</div>
+          </div>
+          <div class="member-card">
+            <div class="member-name">Mr. Sanjay Verma</div>
+            <div class="member-role">Independent Director</div>
+          </div>
+        </div>
+
+        <!-- Sub Accordion 2 -->
+        <div class="sub-accordion-header">Committee Members <span>+</span></div>
+        <div class="sub-accordion-content">
+          <h4>Corporate Social Responsibility Committee</h4>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Role</th>
+              <th>Experience</th>
+              <th>Tenure</th>
+              <th>Status</th>
+            </tr>
+            <tr><td>Mr. Jatinder Dev Seth</td><td>Chairman</td><td>Lead</td><td>20 yrs</td><td>2020–2025</td><td>Active</td></tr>
+            <tr><td>Ms. Bhawna Seth</td><td>Member</td><td>Support</td><td>10 yrs</td><td>2021–2025</td><td>Active</td></tr>
+          </table>
+
+          <h4>Audit Committee</h4>
+          <table>
+            <tr>
+              <th>Name</th><th>Designation</th><th>Role</th><th>Experience</th><th>Tenure</th><th>Status</th>
+            </tr>
+            <tr><td>Mr. Sanjay Verma</td><td>Chairman</td><td>Audit</td><td>15 yrs</td><td>2022–2026</td><td>Active</td></tr>
+            <tr><td>Mr. Nand Lal Sharma</td><td>Member</td><td>Oversight</td><td>12 yrs</td><td>2022–2026</td><td>Active</td></tr>
+          </table>
+
+          <h4>Nomination and Remuneration Committee</h4>
+          <table>
+            <tr>
+              <th>Name</th><th>Designation</th><th>Role</th><th>Experience</th><th>Tenure</th><th>Status</th>
+            </tr>
+            <tr><td>Ms. Bhawna Seth</td><td>Chairperson</td><td>Nomination</td><td>11 yrs</td><td>2022–2026</td><td>Active</td></tr>
+          </table>
+
+          <h4>Stakeholders Relationship Committee</h4>
+          <table>
+            <tr>
+              <th>Name</th><th>Designation</th><th>Role</th><th>Experience</th><th>Tenure</th><th>Status</th>
+            </tr>
+            <tr><td>Mr. Nand Lal Sharma</td><td>Chairman</td><td>Relations</td><td>10 yrs</td><td>2022–2026</td><td>Active</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Accordions Remain Same -->
+    <div class="accordion-item">
+      <div class="accordion-header">Financials <span>+</span></div>
+      <div class="accordion-content">Your existing Financials content here...</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Material Documents <span>+</span></div>
+      <div class="accordion-content">Your existing Material Documents content here...</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Investor Contacts <span>+</span></div>
+      <div class="accordion-content">Your existing Investor Contacts content here...</div>
+    </div>
+  </div>
+
+  <script>
+    // Main Accordion
+    const headers = document.querySelectorAll(".accordion-header");
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const open = header.classList.contains("active");
+        headers.forEach(h => {
+          h.classList.remove("active");
+          h.querySelector("span").textContent = "+";
+          h.nextElementSibling.style.display = "none";
+        });
+        if (!open) {
+          header.classList.add("active");
+          header.querySelector("span").textContent = "–";
+          header.nextElementSibling.style.display = "block";
+        }
+      });
+    });
+
+    // Sub Accordions (inside Governance)
+    const subHeaders = document.querySelectorAll(".sub-accordion-header");
+    subHeaders.forEach(sub => {
+      sub.addEventListener("click", e => {
+        e.stopPropagation();
+        const open = sub.classList.contains("active");
+        subHeaders.forEach(sh => {
+          sh.classList.remove("active");
+          sh.querySelector("span").textContent = "+";
+          sh.nextElementSibling.style.display = "none";
+        });
+        if (!open) {
+          sub.classList.add("active");
+          sub.querySelector("span").textContent = "–";
+          sub.nextElementSibling.style.display = "block";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

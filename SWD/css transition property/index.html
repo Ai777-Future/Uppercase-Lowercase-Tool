@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS TRANSITION PROPERTY</title>
+    <style>
+        .cont {
+            background-color: cyan;
+            width: 50vw;
+            height: 40vh;
+            border: 1px solid black;
+
+
+
+        }
+
+        
+        .box {
+            background-color: red;
+            width: 5vw;
+            height: 4vh;
+            border: 1px solid black;
+            transition-property: background-color, transform;
+            transition-duration: 3s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 1s;
+            /* transition: transform 3s ease-in-out 1s; */
+            
+        }
+        .translate {
+            transform: translateX(20vw) translateY(10vh) scale(2) skew(30deg
+            ) rotate(360deg);
+            background-color: rgb(26, 255, 0);
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Meaning Of Transition :- ek state se dusri state me smoothly jana -->
+
+    <div class="cont">
+        <div class="box translate">
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Checker</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: azure;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+
+        }
+
+        input{
+            padding: 15px 20px;
+            border-radius: 25px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        button{
+            padding: 15px 20px;
+            border-radius: 25px;
+            background-color: aquamarine;
+            color: blue;
+        }
+        p{
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Check Your Eligiblity If You are eligible for vote</h2>
+
+    <input type="number" id="User-value" placeholder="Enter Your Age Here...">
+    <button id="checkBtn">Press Me</button>
+    <p id="result"></p>
+    
+    <script>
+        const input = document.getElementById("User-value");
+        const btn = document.getElementById("checkBtn");
+        const result = document.getElementById("result");
+
+
+        btn.addEventListener("click", function(){
+            let age = input.value;
+            if(age === ""){
+                result.textContent = " ⚠️Please Enter A value";
+                result.style.color = "Orange";
+            }
+            else if(age == 0){
+                result.textContent = "Please Enter A Valid Number Like :- 15, 18 , 35 ,52 ,65";
+                result.style.color = "red"
+            }
+            else if(age < 18){
+                result.textContent = "you are not eligible for vote because you are a minor";
+                result.style.color = "brown";
+
+
+            }
+            else{
+                result.textContent = "you are eligible for vote";
+                result.style.color = "green";
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LectureWala Hero Section</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #3f4c46;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 60px 50px;
+      background-color: #f8f7f2;
+    }
+
+    .left {
+      flex: 1;
+      padding-right: 40px;
+    }
+
+    .left h1 {
+      font-size: 42px;
+      color: #1d1d1d;
+      margin-bottom: 20px;
+    }
+
+    .left p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .left button {
+      background-color: #6c7b71;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .left button:hover {
+      background-color: #5c6a61;
+    }
+
+    .testimonial {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .testimonial img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .right {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bg-box {
+      width: 360px;
+      height: 500px;
+      background-color: #5b6e65;
+      border-radius: 30px;
+      position: absolute;
+      z-index: 0;
+    }
+
+    .girl-img {
+      max-height: 500px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-btn {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: white;
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-size: 14px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      font-weight: bold;
+    }
+
+    .badge-list {
+      position: absolute;
+      right: 30px;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .badge-list button {
+      background-color: #f2f1ec;
+      color: #333;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .info-card {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+      gap: 10px;
+      max-width: 220px;
+      z-index: 2;
+    }
+
+    .info-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+    }
+
+    .info-card div {
+      font-size: 13px;
+    }
+
+    .info-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column-reverse;
+        padding: 40px 20px;
+      }
+
+      .left {
+        padding: 0;
+        text-align: center;
+      }
+
+      .right {
+        margin-bottom: 40px;
+      }
+
+      .contact-btn,
+      .badge-list,
+      .info-card {
+        position: static;
+        margin-top: 10px;
+      }
+
+      .badge-list {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>India’s Best Platform for CA, CS, and CMA Students</h1>
+      <p>LectureWala offers premium lectures, expert doubt-solving and complete mentorship for your commerce journey.</p>
+      <button>Book A Counseling</button>
+
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="user" />
+        <div class="testimonial-text">
+          <strong>5000+ Testimonials</strong><br/>
+          Hear what our top rankers say!
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="bg-box"></div>
+      <img class="girl-img" src="https://hroster.questglt.com/assets/images/talent-discovery3.png" alt="Mentor Image" />
+      <div class="contact-btn">📞 Contact Us</div>
+
+      <div class="badge-list">
+        <button>CA Foundation</button>
+        <button>CS Executive</button>
+        <button>CMA Final</button>
+      </div>
+
+      <div class="info-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922656.png" alt="client" />
+        <div>
+          <strong>5,000+ Students</strong>
+          Learning from LectureWala
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

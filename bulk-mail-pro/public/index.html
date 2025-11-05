@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bulk Personalized Email Sender Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📧 Bulk Personalized Email Sender <small>Pro</small></h1>
+
+    <section class="grid">
+      <div class="card">
+        <label>Subject <small>(supports {{firstName}}, {{lastName}}, {{email}})</small></label>
+        <input id="subject" type="text" placeholder="Subject here" />
+
+        <label>Message</label>
+        <div id="editor" class="editor"></div>
+
+        <div class="row">
+          <div>
+            <label>Recipients CSV</label>
+            <textarea id="recipientsText" placeholder="firstName,lastName,email&#10;John,Doe,john@example.com"></textarea>
+            <div class="hint">or upload CSV:</div>
+            <input id="csvFile" type="file" accept=".csv" />
+          </div>
+          <div> 
+            <label>Attachments</label>
+            <input id="attachments" type="file" multiple />
+            <label>Schedule (optional)</label>
+            <input id="schedule" type="datetime-local" />
+            <div class="row gap">
+              <button id="previewBtn">🔎 Preview</button>
+              <button id="createBatchBtn" class="primary">🚀 Send / Schedule</button>
+              <button id="saveTplBtn">💾 Save as Template</button>
+            </div>
+            <div>
+              <label>Templates</label>
+              <select id="tplSelect"></select>
+              <button id="loadTplBtn">Load</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview card">
+          <h3>Sample Personalized Preview</h3>
+          <div id="sampleSubject" class="mono"></div>
+          <div id="sampleBody" class="preview-pane"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📦 Batches</h2>
+        <div id="batches"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

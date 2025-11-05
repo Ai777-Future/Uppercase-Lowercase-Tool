@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .courses-section-modern {
+  background: linear-gradient(to right, #f8fafc, #fefce8);
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 40px;
+}
+
+.courses-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.course-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #334155;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  background-color: #fef3c7;
+  transform: translateY(-2px);
+}
+
+.course-card.active {
+  background-color: #fde047;
+  border-color: #facc15;
+  color: #1e293b;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(250, 204, 21, 0.3);
+}
+
+
+    </style>
+</head>
+<body>
+    <section class="courses-section-modern">
+  <div class="container">
+    <h2 class="section-heading">Explore Our Courses</h2>
+    <div class="courses-grid">
+      <div class="course-card active">CA Classes Online</div>
+      <div class="course-card">CS Classes Online</div>
+      <div class="course-card">CMA Classes Online</div>
+      <div class="course-card">Global Courses</div>
+      <div class="course-card">Other Courses</div>
+      <div class="course-card">Books & Test Series</div>
+    </div>
+  </div>
+</section>
+
+    
+</body>
+</html>

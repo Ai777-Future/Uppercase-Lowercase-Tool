@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SEO Tool Dashboard — Neon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#121212;
+      --panel-2:#1a1a1a;
+      --cyan:#00f7ff;
+      --mag:#ff00f7;
+      --lime:#00ff99;
+      --rose:#ff0066;
+      --text:#e9faff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:radial-gradient(1200px 600px at -10% -20%,rgba(0,247,255,0.08),transparent),
+                 radial-gradient(900px 500px at 110% 10%,rgba(255,0,247,0.08),transparent),
+                 var(--bg);
+      color:var(--text);
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      display:flex;
+    }
+    /* Sidebar */
+    .sidebar{
+      width:270px; min-width:270px; height:100vh; position:sticky; top:0;
+      background:linear-gradient(180deg,#0d0d0d 0%, #141414 100%);
+      border-right:2px solid var(--cyan);
+      box-shadow:0 0 28px rgba(0,247,255,.35), inset 0 0 20px rgba(0,247,255,.08);
+      padding:22px 16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; margin-bottom:22px;
+    }
+    .brand .dot{
+      width:14px; height:14px; border-radius:50%;
+      background:conic-gradient(from 0deg,var(--cyan),var(--mag),var(--lime),var(--cyan));
+      box-shadow:0 0 18px var(--cyan), 0 0 6px var(--mag) inset;
+    }
+    .brand h2{
+      margin:0; font-family:'Orbitron'; letter-spacing:1px;
+      color:var(--cyan); text-shadow:0 0 12px var(--cyan);
+      font-size:20px;
+    }
+    .nav{margin-top:12px}
+    .nav button{
+      width:100%; text-align:left; background:transparent; color:#fff; border:1px solid rgba(0,247,255,.3);
+      padding:12px 12px; margin:8px 0; border-radius:10px; cursor:pointer; font-weight:600;
+      transition:.25s; display:flex; align-items:center; gap:10px;
+    }
+    .nav button:hover{border-color:var(--mag); box-shadow:0 0 16px rgba(255,0,247,.35)}
+    .nav button.active{
+      background:linear-gradient(180deg,rgba(0,247,255,.12),rgba(0,247,255,.06));
+      border-color:var(--cyan); box-shadow:0 0 18px rgba(0,247,255,.4);
+    }
+    .badge{
+      margin-left:auto; font-size:11px; color:#001a17; background:var(--lime); padding:2px 8px; border-radius:999px;
+      box-shadow:0 0 12px var(--lime);
+    }
+    /* Main */
+    .main{flex:1; min-width:0; padding:18px 22px 60px}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      background:linear-gradient(180deg,#0f0f0f,#141414);
+      border:1px solid rgba(0,247,255,.3);
+      padding:14px 16px; border-radius:14px;
+      box-shadow:0 0 24px rgba(0,247,255,.25), inset 0 0 18px rgba(0,247,255,.06);
+    }
+    header h1{
+      margin:0; font-size:18px; font-family:'Orbitron';
+      color:var(--cyan); text-shadow:0 0 10px var(--cyan);
+      letter-spacing:1px;
+    }
+    .logout{
+      background:var(--rose); border:none; color:#fff; padding:9px 14px; border-radius:10px; cursor:pointer; font-weight:700;
+      box-shadow:0 0 14px rgba(255,0,102,.5); transition:.25s;
+    }
+    .logout:hover{filter:brightness(1.1)}
+    /* Sections */
+    .grid{
+      display:grid; gap:18px; margin-top:18px;
+      grid-template-columns: repeat(12,1fr);
+    }
+    .panel{
+      grid-column: span 12;
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));
+      border:1px solid rgba(0,247,255,.25);
+      box-shadow:0 0 18px rgba(0,247,255,.18), inset 0 0 18px rgba(0,0,0,.45);
+      border-radius:14px; padding:16px;
+    }
+    .panel h3{
+      margin:0 0 10px; font-family:'Orbitron'; color:var(--lime);
+      text-shadow:0 0 10px var(--lime);
+      letter-spacing:.5px; font-size:16px;
+    }
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .row{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:8px 0}
+    textarea, input[type="text"]{
+      width:100%; background:#0e0e0e; color:#fff; border:1px solid rgba(0,247,255,.35);
+      border-radius:10px; padding:12px 12px; outline:none; transition:.2s; font-size:14px;
+      box-shadow:inset 0 0 10px rgba(0,0,0,.6);
+    }
+    textarea:focus,input[type="text"]:focus{border-color:var(--mag); box-shadow:0 0 14px rgba(255,0,247,.35)}
+    textarea{min-height:120px; resize:vertical}
+    .btn{
+      background:linear-gradient(90deg,var(--cyan),#63fff9); color:#001b1e; border:none; padding:10px 14px; border-radius:10px;
+      font-weight:800; cursor:pointer; box-shadow:0 0 16px rgba(0,247,255,.45); transition:.25s;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn.sec{
+      background:linear-gradient(90deg,#282828,#191919); color:#ddd; border:1px solid rgba(0,247,255,.25);
+    }
+    .pill{display:inline-flex; gap:8px; align-items:center;}
+    .small{font-size:12px; opacity:.85}
+    .out{
+      background:#0b0b0b; border:1px dashed rgba(0,247,255,.25); padding:10px; border-radius:10px; min-height:48px;
+      font-family:ui-monospace,Consolas,monospace; color:#b9feff;
+      box-shadow:inset 0 0 12px rgba(0,247,255,.07);
+      white-space:pre-wrap; word-break:break-word;
+    }
+    .table{
+      width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:10px; margin-top:8px;
+      border:1px solid rgba(0,247,255,.25);
+      box-shadow:0 0 12px rgba(0,247,255,.15);
+    }
+    .table th,.table td{
+      text-align:left; padding:10px 12px; border-bottom:1px solid rgba(0,247,255,.15);
+      background:rgba(255,255,255,0.02);
+    }
+    .table th{color:var(--cyan); font-weight:700; font-size:13px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{
+      background:rgba(0,247,255,.1); color:#b9feff; border:1px solid rgba(0,247,255,.25);
+      padding:6px 10px; border-radius:999px; font-size:12px;
+      box-shadow:0 0 10px rgba(0,247,255,.15);
+    }
+    @media (max-width:1000px){
+      .two-col{grid-template-columns:1fr}
+      .sidebar{position:fixed; transform:translateX(-100%); z-index:10}
+      .sidebar.open{transform:none}
+      .main{margin-left:0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="dot"></div>
+      <h2>SEO • NEON</h2>
+    </div>
+    <div class="nav">
+      <button class="active" data-tab="slug"><span>🔗</span> SEO Slug Maker <span class="badge">NEW</span></button>
+      <button data-tab="model"><span>🧩</span> Model Code Maker</button>
+      <button data-tab="keywords"><span>🔍</span> Keywords Generator</button>
+      <button data-tab="density"><span>📊</span> Keyword Density</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header>
+      <h1>🚀 SEO Dashboard — Welcome</h1>
+      <button class="logout" id="logoutBtn">Logout</button>
+    </header>
+
+    <section class="grid">
+
+      <!-- SLUG MAKER -->
+      <div class="panel" id="panel-slug">
+        <h3>🔗 SEO Slug Maker</h3>
+        <div class="two-col">
+          <div>
+            <label class="small">Input Line</label>
+            <textarea id="slugInput" placeholder="e.g. CA-CMA Final DT Regular Batch By CA Bhanwar Borana"></textarea>
+            <div class="row">
+              <div class="pill small"><input type="checkbox" id="keepStop" checked> <label for="keepStop">Keep stop-words (by/of/for…)</label></div>
+              <div class="pill small"><input type="checkbox" id="trimHyphen" checked> <label for="trimHyphen">Trim extra hyphens</label></div>
+            </div>
+            <div class="row">
+              <button class="btn" id="makeSlug">Make Slug</button>
+              <button class="btn sec" id="clearSlug">Clear</button>
+            </div>
+          </div>
+          <div>
+            <label class="small">Result</label>
+            <div class="out" id="slugOut"></div>
+            <div class="row">
+              <button class="btn" data-copy="#slugOut">Copy</button>
+            </div>
+            <div class="small">Format: lowercase • spaces → hyphens • symbols removed • accents normalized</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL MAKER -->
+      <div class="panel" id="panel-model" hidden>
+        <h3>🧩 Model Code Maker</h3>
+        <div class="two-col">
+          <div>
+            <label class="small">Input Line</label>
+            <textarea id="modelInput" placeholder="e.g. CA-CMA Final DT Regular Batch By CA Bhanwar Borana"></textarea>
+            <div class="row">
+              <div class="pill small"><input type="checkbox" id="includeSubject" checked> <label for="includeSubject">Include Subject (DT/IDT/FR…)</label></div>
+              <div class="pill small"><input type="checkbox" id="compact" checked> <label for="compact">Compact (BB not BHANWAR_BORANA)</label></div>
+            </div>
+            <div class="row">
+              <button class="btn" id="makeModel">Make Model</button>
+              <button class="btn sec" id="clearModel">Clear</button>
+            </div>
+            <div class="chips" id="modelHints"></div>
+          </div>
+          <div>
+            <label class="small">Result</label>
+            <div class="out" id="modelOut"></div>
+            <div class="row">
+              <button class="btn" data-copy="#modelOut">Copy</button>
+            </div>
+            <div class="small">Pattern example: <code>CA_CMA_FIN_DT_REG_BB</code></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEYWORDS GENERATOR -->
+      <div class="panel" id="panel-keywords" hidden>
+        <h3>🔍 Keywords Generator</h3>
+        <div class="two-col">
+          <div>
+            <label class="small">Input Line</label>
+            <textarea id="kwInput" placeholder="e.g. CA-CMA Final DT Regular Batch By CA Bhanwar Borana"></textarea>
+            <div class="row">
+              <div class="pill small"><input type="checkbox" id="includeCity"> <label for="includeCity">Add City (optional)</label></div>
+              <input type="text" id="cityText" placeholder="e.g. Mumbai" style="max-width:220px">
+            </div>
+            <div class="row">
+              <button class="btn" id="makeKeywords">Generate</button>
+              <button class="btn sec" id="clearKeywords">Clear</button>
+            </div>
+            <div class="chips" id="kwChips"></div>
+          </div>
+          <div>
+            <label class="small">Result (comma separated)</label>
+            <div class="out" id="kwOut" style="min-height:140px"></div>
+            <div class="row">
+              <button class="btn" data-copy="#kwOut">Copy</button>
+              <button class="btn sec" id="kwAsLines">To Lines</button>
+            </div>
+            <label class="small">Result (one per line)</label>
+            <div class="out" id="kwOutLines" style="min-height:140px"></div>
+            <div class="row">
+              <button class="btn" data-copy="#kwOutLines">Copy Lines</button>
+              <button class="btn sec" id="downloadKwCsv">Download CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEYWORD DENSITY -->
+      <div class="panel" id="panel-density" hidden>
+        <h3>📊 Keyword Density Analyzer</h3>
+        <div class="two-col">
+          <div>
+            <label class="small">Paste Content</label>
+            <textarea id="densInput" placeholder="Paste your content here..."></textarea>
+            <div class="row">
+              <div class="pill small"><input type="checkbox" id="rmStop" checked> <label for="rmStop">Remove stopwords</label></div>
+              <div class="pill small"><input type="checkbox" id="bigrams" checked> <label for="bigrams">Include 2-word phrases</label></div>
+            </div>
+            <div class="row">
+              <button class="btn" id="analyze">Analyze</button>
+              <button class="btn sec" id="clearDens">Clear</button>
+            </div>
+          </div>
+          <div>
+            <label class="small">Top Keywords</label>
+            <table class="table" id="densTable">
+              <thead><tr><th>Keyword</th><th>Count</th><th>Density %</th></tr></thead>
+              <tbody></tbody>
+            </table>
+            <div class="row">
+              <button class="btn" id="downloadCsv">Download CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // ---------- AUTH GUARD ----------
+    (function(){
+      const token = localStorage.getItem('token');
+      if(!token){
+        alert('Unauthorized! Please login first.');
+        location.href = 'login.html';
+      }
+    })();
+    document.getElementById('logoutBtn').addEventListener('click', ()=>{
+      localStorage.clear();
+      location.href = 'login.html';
+    });
+
+    // ---------- NAV ----------
+    const navBtns = document.querySelectorAll('.nav button');
+    const panels = {
+      slug: document.getElementById('panel-slug'),
+      model: document.getElementById('panel-model'),
+      keywords: document.getElementById('panel-keywords'),
+      density: document.getElementById('panel-density'),
+    };
+    navBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        navBtns.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        Object.keys(panels).forEach(k=>panels[k].hidden = (k!==tab));
+      });
+    });
+
+    // ---------- HELPERS ----------
+    const stopWords = new Set(("a,an,the,of,for,to,by,with,on,in,and,or,is,are,be,as,at,from,that,this,those,these,"+
+      "ki,ke,ka,hai,haii,hain,mein,me,ko,se,ye,woh,tha,thi,hai,ho,tha,tha").split(','));
+    const clean = (s)=> s.normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-zA-Z0-9\s\-\/&]+/g,' ')
+      .replace(/\s+/g,' ')
+      .trim();
+
+    const copyFromSel = (sel)=>{
+      const el = document.querySelector(sel);
+      const txt = el?.innerText || '';
+      navigator.clipboard.writeText(txt);
+    };
+    document.querySelectorAll('[data-copy]').forEach(btn=>{
+      btn.addEventListener('click',()=>copyFromSel(btn.getAttribute('data-copy')));
+    });
+
+    // ---------- SLUG MAKER ----------
+    const slugInput = document.getElementById('slugInput');
+    const slugOut = document.getElementById('slugOut');
+    document.getElementById('makeSlug').addEventListener('click', ()=>{
+      const keepStop = document.getElementById('keepStop').checked;
+      const trimHyphen = document.getElementById('trimHyphen').checked;
+      let s = clean(slugInput.value);
+      s = s.replace(/[/&]/g,' ');
+      let parts = s.split(/\s+/).filter(Boolean);
+      if(!keepStop){
+        parts = parts.filter(w=>!stopWords.has(w.toLowerCase()));
+      }
+      let slug = parts.join('-')
+        .replace(/-+/g,'-')
+        .toLowerCase();
+      if(trimHyphen) slug = slug.replace(/^-+|-+$/g,'');
+      slugOut.innerText = slug;
+    });
+    document.getElementById('clearSlug').addEventListener('click', ()=>{
+      slugInput.value=''; slugOut.innerText='';
+    });
+
+    // ---------- MODEL MAKER ----------
+    const modelInput = document.getElementById('modelInput');
+    const modelOut = document.getElementById('modelOut');
+    const modelHints = document.getElementById('modelHints');
+
+    const mapExam = {
+      'ca':'CA','c.a':'CA','c a':'CA',
+      'cma':'CMA','c.m.a':'CMA','c m a':'CMA'
+    };
+    const mapLevel = {
+      'final':'FIN','inter':'INT','ipcc':'INT','foundation':'FOU','found':'FOU',
+      'reg':'REG','regular':'REG','fastrack':'FT','fasttrack':'FT','fast-track':'FT','ft':'FT'
+    };
+    const mapSubject = {
+      'dt':'DT','direct tax':'DT','taxation':'TX','idt':'IDT','gst':'IDT','fr':'FR','audit':'AUD','law':'LAW',
+      'sm':'SM','eco':'ECO','sfm':'SFM','costing':'SCM','scm':'SCM'
+    };
+    function initials(name, compact=true){
+      if(!name) return '';
+      // take words; use last two tokens initials
+      const words = name.trim().split(/\s+/).filter(Boolean);
+      if(!words.length) return '';
+      if(compact){
+        const pick = words.length>=2 ? words.slice(-2) : [words[0]];
+        return pick.map(w=>w[0]).join('').toUpperCase();
+      } else {
+        return words.map(w=>w.replace(/[^A-Za-z]/g,'').toUpperCase()).join('_');
+      }
+    }
+    function parseModelParts(raw){
+      const s = clean(raw).toLowerCase();
+      const tokens = s.split(/[\s\-\/]+/).filter(Boolean);
+      const found = { exams:new Set(), level:null, subject:null, batch:null, teacher:null };
+      // teacher name after "by"
+      const byIdx = tokens.indexOf('by');
+      if(byIdx>=0){
+        const twords = tokens.slice(byIdx+1).join(' ');
+        found.teacher = twords;
+      } else {
+        // guess teacher at end if looks like two words and starts with letters
+        const guess = s.match(/by\s+(.+)$/i) || null;
+        if(guess) found.teacher = guess[1];
+      }
+      tokens.forEach(t=>{
+        if(mapExam[t]) found.exams.add(mapExam[t]);
+        if(mapLevel[t]) {
+          if(['REG','FT','INT','FIN','FOU'].includes(mapLevel[t])){
+            // FIN/INT/FOU considered level; REG/FT considered batch
+            if(['REG','FT'].includes(mapLevel[t])) found.batch = mapLevel[t];
+            else found.level = mapLevel[t];
+          }
+        }
+        if(mapSubject[t]) found.subject = mapSubject[t];
+        if(['regular','reg','ft','fasttrack','fast-track','fastrack'].includes(t)) found.batch = mapLevel[t]||'REG';
+      });
+      // defaults
+      if(!found.level){
+        if(s.includes('final')) found.level='FIN';
+        else if(s.includes('inter')) found.level='INT';
+      }
+      return found;
+    }
+    document.getElementById('makeModel').addEventListener('click', ()=>{
+      const includeSubject = document.getElementById('includeSubject').checked;
+      const compactTeacher = document.getElementById('compact').checked;
+
+      const parts = parseModelParts(modelInput.value);
+      const arr = [];
+      if(parts.exams.size){
+        arr.push([...parts.exams].join('_'));
+      }
+      if(parts.level) arr.push(parts.level);
+      if(includeSubject && parts.subject) arr.push(parts.subject);
+      if(parts.batch) arr.push(parts.batch);
+      if(parts.teacher){
+        const t = initials(parts.teacher, compactTeacher);
+        if(t) arr.push(t);
+      }
+      const code = arr.join('_').replace(/_+/g,'_').replace(/^_+|_+$/g,'');
+      modelOut.innerText = code || '—';
+      // Hints
+      modelHints.innerHTML = '';
+      const h = [
+        'Exam: ' + ([...parts.exams].join(', ') || '—'),
+        'Level: ' + (parts.level || '—'),
+        'Subject: ' + (parts.subject || '—'),
+        'Batch: ' + (parts.batch || '—'),
+        'Teacher: ' + (parts.teacher || '—'),
+      ];
+      h.forEach(x=>{
+        const span = document.createElement('div');
+        span.className='chip';
+        span.textContent=x;
+        modelHints.appendChild(span);
+      });
+    });
+    document.getElementById('clearModel').addEventListener('click', ()=>{
+      modelInput.value=''; modelOut.innerText=''; modelHints.innerHTML='';
+    });
+
+    // ---------- KEYWORDS GENERATOR ----------
+    const kwInput = document.getElementById('kwInput');
+    const kwOut = document.getElementById('kwOut');
+    const kwOutLines = document.getElementById('kwOutLines');
+    const kwChips = document.getElementById('kwChips');
+
+    function titleCase(s){
+      return s.toLowerCase().replace(/\b[a-z]/g, m=>m.toUpperCase());
+    }
+    function generateKeywords(raw, cityOpt){
+      const base = clean(raw);
+      const parts = parseModelParts(base);
+      // derive teacher cleaned
+      const teacherFull = parts.teacher ? titleCase(parts.teacher) : '';
+      const teacherShort = parts.teacher ? initials(parts.teacher,false).split('_').join(' ') : '';
+      // exam combos
+      const exams = [...parts.exams];
+      const examText = exams.join('-') || '';
+      const levelMap = {FIN:'Final', INT:'Inter', FOU:'Foundation'};
+      const levelText = parts.level ? levelMap[parts.level] || parts.level : '';
+      const subjMap = {DT:'Direct Tax', IDT:'Indirect Tax', FR:'Financial Reporting', AUD:'Audit', LAW:'Law', SFM:'SFM', SCM:'Costing', TX:'Tax'};
+      const subjectText = parts.subject ? subjMap[parts.subject] || parts.subject : '';
+      const batchMap = {REG:'Regular', FT:'Fast Track'};
+      const batchText = parts.batch ? batchMap[parts.batch] || parts.batch : '';
+
+      const combos = new Set();
+
+      const combosBase = [
+        `${examText} ${levelText} ${subjectText}`.trim(),
+        `${examText} ${levelText}`.trim(),
+        `${levelText} ${subjectText}`.trim(),
+        `${subjectText}`.trim()
+      ].filter(Boolean);
+
+      const teacherVariants = [teacherFull, teacherShort].filter(Boolean);
+      const prefixes = ['by','with','taught by','classes by'];
+
+      combosBase.forEach(cb=>{
+        combos.add(cb);
+        teacherVariants.forEach(tv=>{
+          prefixes.forEach(p=>{
+            combos.add(`${cb} ${p} ${tv}`);
+          });
+        });
+        if(batchText) {
+          combos.add(`${cb} ${batchText} Batch`);
+          teacherVariants.forEach(tv=>{
+            combos.add(`${cb} ${batchText} Batch by ${tv}`);
+          });
+        }
+      });
+
+      // Brand-style keywords
+      if(teacherFull){
+        combos.add(`${examText} ${levelText} by ${teacherFull}`);
+        combos.add(`${levelText} ${subjectText} by ${teacherFull}`);
+        combos.add(`${subjectText} by ${teacherFull}`);
+        combos.add(`${subjectText} classes by ${teacherFull}`);
+      }
+
+      // City append
+      if(cityOpt){
+        const city = titleCase(cityOpt);
+        [...combos].forEach(k=>{
+          combos.add(`${k} in ${city}`);
+          combos.add(`${k} ${city}`);
+        });
+      }
+
+      // Normalizations
+      const finalList = [...combos]
+        .map(s=>s.replace(/\s+/g,' ').trim())
+        .filter(Boolean);
+
+      return Array.from(new Set(finalList));
+    }
+
+    document.getElementById('makeKeywords').addEventListener('click', ()=>{
+      const city = document.getElementById('includeCity').checked ? document.getElementById('cityText').value : '';
+      const list = generateKeywords(kwInput.value, city);
+      // comma
+      kwOut.innerText = list.join(', ');
+      // lines
+      kwOutLines.innerText = list.join('\n');
+      // quick chips
+      kwChips.innerHTML='';
+      list.slice(0,12).forEach(k=>{
+        const d=document.createElement('div');
+        d.className='chip'; d.textContent=k; kwChips.appendChild(d);
+      });
+    });
+    document.getElementById('kwAsLines').addEventListener('click', ()=>{
+      const txt = kwOut.innerText;
+      kwOutLines.innerText = txt.split(/\s*,\s*/).filter(Boolean).join('\n');
+    });
+    document.getElementById('clearKeywords').addEventListener('click', ()=>{
+      kwInput.value=''; kwOut.innerText=''; kwOutLines.innerText=''; kwChips.innerHTML='';
+    });
+    document.getElementById('downloadKwCsv').addEventListener('click', ()=>{
+      const rows = kwOutLines.innerText.trim().split('\n').filter(Boolean);
+      if(!rows.length) return;
+      const csv = 'Keyword\n' + rows.map(r=>`"${r.replace(/"/g,'""')}"`).join('\n');
+      const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'keywords.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // ---------- DENSITY ----------
+    const densInput = document.getElementById('densInput');
+    const densTable = document.querySelector('#densTable tbody');
+
+    function tokenize(text){
+      return clean(text).toLowerCase().split(/\s+/).filter(Boolean);
+    }
+    function densityAnalyze(text, {removeStop=true, includeBigrams=true}={}){
+      const tokens = tokenize(text);
+      if(!tokens.length) return {total:0, list:[]};
+      const words = removeStop ? tokens.filter(t=>!stopWords.has(t)) : tokens.slice();
+      const freq = new Map();
+      words.forEach(w=> freq.set(w, (freq.get(w)||0)+1));
+      if(includeBigrams && words.length>1){
+        for(let i=0;i<words.length-1;i++){
+          const bi = `${words[i]} ${words[i+1]}`;
+          freq.set(bi,(freq.get(bi)||0)+1);
+        }
+      }
+      const total = words.length;
+      const list = [...freq.entries()].map(([k,v])=>({k, c:v, d:+((v/total)*100).toFixed(2)}))
+        .sort((a,b)=> b.c - a.c).slice(0,50);
+      return {total, list};
+    }
+    document.getElementById('analyze').addEventListener('click', ()=>{
+      const res = densityAnalyze(densInput.value, {
+        removeStop: document.getElementById('rmStop').checked,
+        includeBigrams: document.getElementById('bigrams').checked
+      });
+      densTable.innerHTML='';
+      res.list.forEach(row=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${row.k}</td><td>${row.c}</td><td>${row.d}%</td>`;
+        densTable.appendChild(tr);
+      });
+    });
+    document.getElementById('clearDens').addEventListener('click', ()=>{
+      densInput.value=''; densTable.innerHTML='';
+    });
+    document.getElementById('downloadCsv').addEventListener('click', ()=>{
+      const rows = [...densTable.querySelectorAll('tr')].map(tr=>[...tr.children].map(td=>td.innerText));
+      if(!rows.length) return;
+      let csv='Keyword,Count,Density (%)\n';
+      csv += rows.map(r=>r.map(x=>`"${x.replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download='density.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  </script>
+</body>
+</html>

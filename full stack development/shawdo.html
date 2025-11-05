@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS SHAWDO AND OUTLINES</title>
+    <style>
+
+        body{
+            background-color: black;
+            color: rgb(28, 232, 28);
+        }
+
+        .box{
+            border: 1px solid rgb(53, 246, 5);
+                  padding: 34px;
+
+        }
+.box:hover{
+    
+    box-shadow: 2px 2px 50px 3px rgb(14, 216, 28);
+    transition: 1.5s ease-in;
+    
+    
+}
+
+.box p:hover{
+    text-shadow: 5px 5px 15px rgb(14, 216, 28);
+    transition: 1.5s ease-in;
+
+
+}
+
+.para{
+    outline: 1px solid;
+    outline-offset: 20px;
+    border: 1px solid black;
+    
+    /* border-radius: 50px; */
+    
+}
+
+
+    </style>
+</head>
+<body>
+    
+<div class="box">
+<p>this is a box</p>
+</div>
+<br>
+
+<div>
+    <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, officia? Cum harum voluptates sunt blanditiis vitae consequatur odio veritatis assumenda ipsum. Officia vero aperiam autem dolorum provident ea perferendis modi?</p>
+</div>
+</body>
+</html>
+
+
+
+
+<!-- BOX SHAWDO -->
+ <!-- Thier Are 6 Features In Box Shawdo  -->
+
+ <!-- 1). h-offset and v-offset Determines The Shawdow's Horizontals and vertical position. -->
+ <!-- 2).Blur- The Larger The Value, The Blurrier The Shadow. -->
+ <!-- 3).Spread - Expands or Shrinks The Shadow Size. -->
+ <!-- 4). Color - Defines The Shadow Color -->
+ <!-- 5).inset- Makes The Shadow inner. -->
+
+
+ <!-- Bolier Plate OF box Shadow -->
+<!-- box-shadow: h-offset v-offset blur spread color inset; -->
+
+<!-- Their Is An Example Of Box-Shadow -->
+ 
+<!-- .div-element{
+    box-shadow: 5px 5px 15px 5px #ffff;
+} -->
+
+
+<!-- TEXT SHADOW -->
+
+<!-- Boiler Plate Of Text Shadow -->
+ <!-- text-shadow: h-offset v-offset blur color; -->
+
+
+ <!-- Example Of Text Shadow -->
+
+
+ <!-- OUTLINES -->
+
+ <!-- Boiler Plate of outline -->
+  <!-- .button-element:focus{
+    outline:2px solid blue
+  } -->
+
+   
+      <!-- Diffrence Between Outline and Border -->
+  <!-- While Both can Visually appear Similar, Outlines Differ From Borders in a Few Ways;
+  1. Position : Outlines Don't Take Up Space They're drawn around the element, outside of any border.
+
+  2. Offset : Using The Outline-Offset Property. You Can Set The Space Between On outline And the Edge Or Border Of An Element.
+  
+  3. Width : Borders Can Have Varying Widths on Diffrent Sides, Outlines Have A Uniform Width.
+
+  4.Rounded Corners :- Borders can have rounded Corners using border-radius whihle outline cannot. -->

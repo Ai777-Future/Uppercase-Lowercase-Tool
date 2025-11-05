@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cont {
+            border: 1px solid black;
+            display: grid;
+            grid-template-areas: "one two two three"
+                                  "one four five six"
+                                  "one seven eight six";
+            height: 100vh;
+            grid-template-columns: 1fr 2fr 2fr 1fr;
+            gap: 10px;
+            
+
+        }
+
+        .item {
+            border: 1px solid red;
+            /* width: 55px; */
+            /* height: 55px; */
+            padding: 20px;
+
+
+        }
+        .item-1{
+            grid-area: one;
+            background-color: #6DBE4F;
+        }
+        .item-2{
+            grid-area: two;
+            background-color: #6DBE4F;
+        }
+        .item-3{
+            grid-area: three;
+            background-color: #EC3336;
+        }
+        .item-4{
+            grid-area: four;
+            background-color: #FBB22F;
+            
+        }
+        .item-5{
+            grid-area: five;
+            background-color: #EC3336;
+        }
+        .item-6{
+            grid-area: six;
+            background-color: #6DBE4F;
+        }
+        .item-7{
+            grid-area: seven;
+            background-color: #EC3336;
+        }
+        .item-8{
+            grid-area:eight;
+            background-color: #FBB22F;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+        <div class="item item-4"></div>
+        <div class="item item-5"></div>
+        <div class="item item-6"></div>
+        <div class="item item-7"></div>
+        <div class="item item-8"></div>
+    </div>
+</body>
+
+</html>

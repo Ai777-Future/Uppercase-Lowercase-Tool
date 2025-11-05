@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Data Extractor Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            max-width: 800px;
+            border-collapse: collapse;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        th p {
+            margin: 0;
+        }
+        th p font[color="#ff0000"] {
+            color: #ff0000;
+        }
+        td h1, td h2, td h3 {
+            margin: 0;
+            font-size: 14px;
+        }
+        td p {
+            margin: 0;
+            font-size: 14px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-section">
+        <h4>Product Data Extractor Tool</h4>
+        <input type="text" id="urlInput" placeholder="Enter Product URL">
+        <button onclick="generateTable()">Generate Table</button>
+    </div>
+
+    <div id="tableContainer"></div>
+
+    <script>
+        function generateTable() {
+            // Placeholder data (mimicking the screenshot data)
+            const data = {
+                facultyName: "CA BHANWAR BORANA",
+                brand: "CA BHANWAR BORANA CLASSES",
+                course: "CA/CMA INTER",
+                courseName: "DIRECT TAXATION By CA BHANWAR BORANA",
+                syllabus: "NEW",
+                viewDemo: "https://www.youtube.com/watch?v=syIw1TszeVU&ab_channel=BBVIRTUALSINTERMEDIATE",
+                noOfLectures: "25-30 Lecture",
+                noOfHours: "100-120 Hrs. (Approx.)",
+                videoLanguage: "Hindi-English Mix",
+                attempt: "May/June & Sep/Dec 25",
+                mode: "Google Drive",
+                studyMaterial: "1 Compact Theory Book / 1 Compact Q&A Book / 1 Class Notes Book",
+                studyMaterialLanguage: "ENGLISH",
+                noOfViews: "1.5 VIEWS",
+                validity: "09 MONTHS",
+                fastForward: "YES",
+                classesRun: "LAPTOP / ANDROID",
+                systemRequirement: "Simultaneous login on Android App and Laptop is permitted After you log out from the other device. For Eg. If you have activated in Android and now you wish to watch the lectures in Laptop, You just have to Log out of the application in Android and Login in the application in Laptop. For Google Drive & Pendrive 1. It can be played only on LAPTOP with Windows 10,11 or any other higher version. For Mobile (Android ONLY) 1. Android version 7.0 or higher will be required. 2. 3 GB Ram & 32 GB Internal Memory At least will be Required 3. It will Supported in IOS - iPhone / iPad / M1 and above MacBook 4. it will not run on intel MacBook",
+                doubtClearing: "E-mail/mobile apps/phone",
+                amendment: "Amendment Notes through mail and lectures through Google",
+                recording: "Nov 2024"
+            };
+
+            // Generate the table HTML
+            const tableHTML = `
+                <div>
+                    <h4><p><b style="letter-spacing: 1px; font-size: 13px;">Detailed Course Specification:-</b></p></h4>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><p><font color="#ff0000">FACULTY NAME</font></p><p><font color="#ff0000">BRAND</font></p></th>
+                            <th><h2><b><a href="https://lecturewala.com/faculties/ca-bhanwar-borana"><span style="font-size: 14px;">${data.facultyName}</span></a></b></h2>
+                                <h2><b><a href="https://lecturewala.com/lecturewala-brand/bhanwar-borana-classes"><span style="font-size: 14px;">${data.brand}</span></a></b></h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>COURSE</b></td><td><h3><span style="font-size: 14px;">${data.course}</span></h3></td></tr>
+                        <tr><td><b>COURSE NAME</b></td><td><h1><span style="font-size: 14px;">${data.courseName}</span></h1></td></tr>
+                        <tr><td><b>SYLLABUS</b></td><td>${data.syllabus}</td></tr>
+                        <tr><td><b>VIEW DEMO</b></td><td><p><b><a href="${data.viewDemo}">Click Here</a></b></p></td></tr>
+                        <tr><td><b>NO. OF LECTURES</b></td><td>${data.noOfLectures}</td></tr>
+                        <tr><td><b>NO. OF HOURS</b></td><td>${data.noOfHours}</td></tr>
+                        <tr><td><b>VIDEO LANGUAGE</b></td><td>${data.videoLanguage}</td></tr>
+                        <tr><td><b>ATTEMPT</b></td><td><p>${data.attempt}</p></td></tr>
+                        <tr><td><b>MODE</b></td><td><p>${data.mode}</p></td></tr>
+                        <tr><td><b>STUDY MATERIAL</b></td><td><p>${data.studyMaterial}</p></td></tr>
+                        <tr><td><b>STUDY MATERIAL LANGUAGE</b></td><td>${data.studyMaterialLanguage}</td></tr>
+                        <tr><td><b>NO. OF VIEWS</b></td><td>${data.noOfViews}</td></tr>
+                        <tr><td><b>VALIDITY</b></td><td><p>${data.validity}</p></td></tr>
+                        <tr><td><b>FAST FORWARD</b></td><td>${data.fastForward}</td></tr>
+                        <tr><td><b>CLASSES RUN</b></td><td>${data.classesRun}</td></tr>
+                        <tr><td><b>SYSTEM REQUIREMENT</b></td><td><p>${data.systemRequirement}</p></td></tr>
+                        <tr><td><b>How the Doubt clearing session will be available?</b></td><td>${data.doubtClearing}</td></tr>
+                        <tr><td><b>HOW TO AMENDMENT WILL BE</b></td><td>${data.amendment}</td></tr>
+                        <tr><td><b>RECORDING</b></td><td>${data.recording}</td></tr>
+                    </tbody>
+                </table>
+            `;
+
+            // Insert the table into the page
+            document.getElementById('tableContainer').innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>

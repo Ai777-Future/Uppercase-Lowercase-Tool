@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uppercase or lowercase tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+            /* color: cyan; */
+        }
+
+        .cont {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            gap: 15px;
+        }
+
+        textarea {
+            /* padding: 20px 80px; */
+            background-color: blue;
+            color: yellow;
+        }
+
+        textarea::placeholder {
+            color: yellow;
+            /* text-align: center; */
+        }
+
+        button {
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: cyan;
+        }
+
+        button:active {
+            background-color: red;
+        }
+
+        .box{
+            border: 1px solid white;
+            /* padding: 150px 743px; */
+            overflow: scroll;
+            width: 70%;
+            height: 30vh;
+            position: relative;
+            display: none;
+        }
+
+        .fa-solid{
+            color: cyan;
+            padding: 10px 10px;
+            position: fixed;
+            display: none;
+
+        }
+
+        .fa-solid:hover{
+            color: red;
+
+        }
+        .fa-solid:active{
+            color: yellow;
+        }
+
+        .box > p{
+            margin-top: 30px;
+        }
+
+        /* .sepcial-box{
+            border: 1px solid white;
+         
+        } */
+
+        .sepcial-box > video{
+            width: 100%;
+            height: 30vh;
+            display: none;
+        }
+    
+
+        
+
+    </style>
+</head>
+
+<body>
+
+    <div class="cont">
+        <!-- <input type="text" id="User" placeholder="Enter Your Text Here...."> -->
+        <textarea name="input" id="area" rows="30" cols="200" placeholder="Enter Your Text here...."></textarea>
+        <div class="buttons">
+            <button id="btn-1">Uppercase</button>
+            <button id="btn-2">Lowercase</button>
+            <button id="btn-3">Clear</button>
+            <button id="btn-4">Special button For You</button>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-copy" id="copy"></i>
+            <p id="result"></p>
+        </div>
+
+        <div class="sepcial-box">
+            <video src="/Tools/String Size Tool/assests/161478-823541690_small.mp4" autoplay loop></video>
+            <audio src="/Tools/String Size Tool/assests/song.mp3" muted loop></audio>
+        </div>
+    </div>
+
+
+
+    <script>
+        const userInput = document.getElementById("area");
+        const one = document.getElementById("btn-1");
+        const two = document.getElementById("btn-2");
+        const three = document.getElementById("btn-3");
+        const result = document.getElementById("result");
+        const icon = document.getElementById("copy");
+        const box = document.querySelector(".box");
+        const four = document.getElementById("btn-4");
+        const video = document.querySelector("video");
+        const audio = document.querySelector("audio");
+
+
+
+        
+        
+
+        one.addEventListener("click", function () {
+
+            let value = userInput.value
+
+            if (userInput.value === "") {
+                result.innerHTML = "Please Enter Some Value..."
+                result.style.color = "#1bfb23";
+                box.style.display = "block";
+                
+            }
+            else {
+
+                value = userInput.value.toUpperCase();
+                result.innerHTML = value;
+                result.style.color = "#1bfb23";
+                copy.style.display = "block";
+                box.style.display = "block";
+                
+            }
+
+
+        })
+
+        two.addEventListener("click", function () {
+
+            let userValue = userInput.value
+
+
+            if (userInput.value === "") {
+                result.innerHTML = "Please Enter Some Value..."
+                result.style.color = "#1bfb23";
+                box.style.display = "block";
+            }
+            else {
+
+               userValue =  userInput.value.toLowerCase();
+                result.innerHTML = userValue;
+                result.style.color = "#1bfb23";
+                box.style.display = "block";
+            }
+        })
+        three.addEventListener("click", function(){
+            userInput.value = "";
+            result.innerHTML = "";
+            copy.style.display = "none";
+            box.style.display = "none";
+            video.pause();
+            video.style.display = "none";
+            audio.pause();
+            audio.currentTime = 0;
+        })
+
+        icon.addEventListener("click", function(){
+            if(userInput.value === ""){
+                alert("please Enter Value First");
+                box.style.display = "block";
+
+            }
+            else{
+                const text = result.innerHTML;
+                navigator.clipboard.writeText(text);
+                alert("Copied");
+                box.style.display = "block";
+
+
+
+            }
+        })
+
+        four.addEventListener("click", function(){
+            video.style.display = "block";
+            video.play();
+            audio.muted = false;
+            audio.play();
+            
+
+        })
+
+    </script>
+</body>
+
+</html>

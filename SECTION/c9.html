@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LectureWala Hero Section</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fafafa;
+      padding: 40px;
+    }
+
+    .hero {
+      display: flex;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .left {
+      flex: 1;
+      padding-right: 40px;
+    }
+
+    .left h1 {
+      font-size: 42px;
+      color: #1c1c1c;
+      margin-bottom: 20px;
+    }
+
+    .left p {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      background-color: #647e68;
+      color: white;
+      padding: 14px 24px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .stat span {
+      font-weight: bold;
+    }
+
+    .right {
+      flex: 1;
+      position: relative;
+    }
+
+    .circle-bg {
+      background-color: #cbd5c0;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      position: absolute;
+      right: 40px;
+      top: 20px;
+      z-index: 0;
+    }
+
+    .profile-img {
+      position: relative;
+      width: 300px;
+      z-index: 1;
+    }
+
+    .contact-box {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .contact-box::before {
+      content: '📞';
+    }
+
+    .testimonial-box {
+      position: absolute;
+      bottom: 20px;
+      right: 0px;
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      width: 260px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-box img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .testimonial-box .info {
+      font-size: 14px;
+    }
+
+    .testimonial-box .info strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+      }
+      .right {
+        margin-top: 40px;
+      }
+      .circle-bg {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="left">
+    <h1>We Nurture Good Practice for Your Success</h1>
+    <p>Empowering you to excel in CA, CS, and CMA through high-quality courses.</p>
+    <a href="#" class="btn">Enroll in a Course</a>
+
+    <div class="stats">
+      <div class="stat">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" />
+        <div>
+          <span>500+ Testimonials</span><br>
+          <small>Listen to what they say about us.</small>
+        </div>
+      </div>
+      <div class="stat">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" />
+        <div>
+          <span>5,000 Consulted Clients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="contact-box">Contact Us</div>
+    <div class="circle-bg"></div>
+    <img class="profile-img" src="https://i.ibb.co/FXYy8Zn/lecturewala-girl.png" alt="Woman with book" />
+    <div class="testimonial-box">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client">
+      <div class="info">
+        <strong>5,000 Consulted Clients</strong>
+        <span>Our experts have helped many client lives.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

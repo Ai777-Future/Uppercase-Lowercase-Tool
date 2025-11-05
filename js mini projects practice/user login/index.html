@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+        input{
+            padding: 10px 25px;
+            border-radius: 10px;
+            
+        }
+
+        button{
+            padding: 10px 35px;
+            background-color: aqua;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <input type="text" placeholder="enter your username" id="UserInput">
+        <input type="number" placeholder="password" id="password">
+        <button id="log">login</button>
+    </div>
+
+    <script>
+        const input = document.getElementById("UserInput");
+        const pass = document.getElementById("password");
+        const logbtn = document.getElementById("log");
+
+        let Username = "sandeep";
+        let passcode = "12345";
+
+        logbtn.addEventListener("click", function(){
+            if (input.value == Username && pass.value == passcode) {
+                alert("✅ succesfull login");
+                
+            }
+            else if(input.value == "" && pass.value == passcode){
+                alert("please enter your username")
+
+            }
+            else if(input.value == Username && pass.value == ""){
+                alert("please enter your password")
+
+            }
+            else if(input.value == "" && pass.value == ""){
+                alert("please enter your username or password")
+
+            }
+            else{
+                alert("❌ invalid password")
+            }
+        })  
+    </script>
+</body>
+</html>

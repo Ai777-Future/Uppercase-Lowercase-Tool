@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cont{
+            border: 1px solid black;
+            display: grid;
+            grid-template-areas: "a a b b"
+                                "a a c d"
+                                "e e e e";
+                                grid-template-columns: 1fr 1fr 1fr 1fr;
+                                /* grid-template-areas: auto 1fr 1fr 1fr; */
+                                height: 98vh;
+
+        }
+
+        .item{
+            border: 2px solid red;
+            /* height: 55px; */
+            /* width: 55px; */
+            padding: 20px;
+
+        }
+
+        .item-1{
+            grid-area: a;
+            background-color: #8FDAFF;
+        }
+        .item-2{
+            grid-area: b;
+            background-color: #FF8FF1;
+
+        }
+        .item-3{
+            grid-area: c;
+            background-color: #998FFF;
+
+        }
+        .item-4{
+            grid-area: d;
+            background-color: #FFDC8F;
+
+        }
+        .item-5{
+            grid-area: e;
+            background-color: #8FFFB8;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="item item-1">a</div>
+        <div class="item item-2">b</div>
+        <div class="item item-3">c</div>
+        <div class="item item-4">d</div>
+        <div class="item item-5">e</div>
+    </div>
+    
+</body>
+</html>

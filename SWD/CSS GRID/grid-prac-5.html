@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cont{
+            border: 1px solid black;
+            display: grid;
+            grid-template-areas: "BANNER BANNER BANNER"
+            "NAV NAV NAV"
+            "MAIN PITCURE ABOUT"
+            "MAIN MAIN TWEET"
+            "FOOTER FOOTER FOOTER";
+            grid-template-columns: 1fr 1fr 1fr;
+            height: 95vh;
+            
+
+        }
+
+        .item{
+            border: 2px solid red;
+            /* height: 55px; */
+            /* width: 55px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        .item-1{grid-area: BANNER;
+        }
+        .item-2{grid-area: NAV;
+        }
+        .item-3{grid-area: MAIN;
+        }
+        .item-4{grid-area: PITCURE;
+        }
+        .item-5{grid-area: ABOUT;
+        }
+        .item-6{grid-area: TWEET;
+        }
+        .item-7{grid-area: FOOTER;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="cont">
+        <div class="item item-1">BANNER</div>
+        <div class="item item-2">NAVIGATION LINKS</div>
+        <div class="item item-3">MAIN CONTENT</div>
+        <div class="item item-4">PITCURE</div>
+        <div class="item item-5">ABOUT ME BLURB</div>
+        <div class="item item-6">RECENT TWEETS</div>
+        <div class="item item-7">FOOTER</div>
+    </div>
+</body>
+</html>

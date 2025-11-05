@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>More Love</title>
+  <style>
+    body {
+      background: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 500px;
+    }
+    .card h1 {
+      color: #ff3399;
+    }
+    .card p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>I Love You Forever 💖</h1>
+    <p>
+      Tum mere dil ki dhadkan ho.<br>
+      Tumhara saath mere jeene ki wajah hai.<br>
+      Tum ho to sab kuch hai... 🌹
+    </p>
+  </div>
+
+  <!-- Music player (hidden) -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="your-music-file.mp3" type="audio/mp3">
+    Your browser does not support audio.
+  </audio>
+
+  <script>
+    // Play music on page load
+    window.onload = function() {
+      document.getElementById("bgMusic").play();
+    };
+  </script>
+</body>
+</html>

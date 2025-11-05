@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>H4X Live Location (Consent-Based)</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Socket.IO (served by our server) -->
+  <script src="/socket.io/socket.io.js"></script>
+
+</head>
+<body>
+  <div class="scanlines"></div>
+  <header>
+    <h1><span class="glitch" data-text="H4X-LOC">H4X-LOC</span> <small>consent-only</small></h1>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="mode-switch">
+        <button id="btnSharer" class="btn primary">I’m Sharing</button>
+        <button id="btnViewer" class="btn">I’m Viewing</button>
+      </div>
+
+      <div id="sharerPanel" class="panel hidden">
+        <h2>Share Your Live Location</h2>
+        <p class="note">Grant browser permission. A <strong>Room ID</strong> or QR will be generated. Share it only with people you trust.</p>
+        <div class="grid">
+          <label>Room ID
+            <input id="roomSharer" value="" placeholder="auto-generated…" readonly />
+          </label>
+          <button id="copySharer" class="btn">Copy</button>
+          <button id="qrSharer" class="btn">QR</button>
+          <button id="startShare" class="btn primary">Start Sharing</button>
+          <button id="stopShare" class="btn danger">Stop</button>
+        </div>
+      </div>
+
+      <div id="viewerPanel" class="panel hidden">
+        <h2>View a Live Location</h2>
+        <p class="note">Enter the Room ID you received. No tracking happens unless the other person grants permission.</p>
+        <div class="grid">
+          <label>Room ID
+            <input id="roomViewer" placeholder="e.g. 7GJX9F" />
+          </label>
+          <button id="joinViewer" class="btn primary">Join</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-wrap card">
+      <div id="map"></div>
+      <div id="statusBar">Status: idle</div>
+    </section>
+  </main>
+
+  <canvas id="qrCanvas" class="hidden" width="256" height="256"></canvas>
+
+  <footer>
+    <small>Built for good use only. Your data stays in your control.</small>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

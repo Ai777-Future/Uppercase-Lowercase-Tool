@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Image → Text (OCR) — Paste / Upload / Drag & Drop</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.02);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#071023 0%, #071826 100%); color:#e6eef6;
+      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:28px;
+    }
+    .wrap{
+      width:100%; max-width:980px; background:var(--card); padding:20px; border-radius:12px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    header{display:flex; gap:12px; align-items:center; margin-bottom:14px}
+    header h1{font-size:18px; margin:0}
+    header p{margin:0; color:var(--muted); font-size:13px}
+    .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .drop{
+      flex:1; min-height:140px; border-radius:10px; background:var(--glass);
+      display:flex; gap:12px; align-items:center; justify-content:center; padding:14px; text-align:center;
+      border:2px dashed rgba(255,255,255,0.04); cursor:copy; transition:all .18s ease;
+    }
+    .drop.dragover{border-color:var(--accent); box-shadow:0 6px 26px rgba(6,182,212,0.06)}
+    .drop small{display:block; color:var(--muted)}
+    .preview{
+      width:230px; height:140px; border-radius:8px; overflow:hidden; background:#071425; display:flex; align-items:center; justify-content:center;
+      border:1px solid rgba(255,255,255,0.02)
+    }
+    .preview img{max-width:100%; max-height:100%; display:block}
+    .actions{display:flex; gap:8px; align-items:center}
+    input[type=file]{display:none}
+    .btn{
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      color:var(--accent); padding:8px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.03);
+      cursor:pointer; font-weight:600; font-size:13px;
+    }
+    .btn.ghost{color:var(--muted); background:transparent}
+    .progress{height:8px; background:#071425; border-radius:999px; overflow:hidden; width:100%;}
+    .progress > i{display:block; height:100%; width:0%; background:linear-gradient(90deg,#06b6d4,#60a5fa); transition:width .12s linear}
+    .result-wrap{margin-top:14px; display:grid; grid-template-columns:1fr 320px; gap:14px}
+    textarea{width:100%; min-height:280px; resize:vertical; padding:12px; border-radius:8px; background:#071425; color:#eaf3ff; border:1px solid rgba(255,255,255,0.03); font-size:14px; line-height:1.45}
+    .meta{color:var(--muted); font-size:13px; margin-bottom:8px}
+    .small{font-size:12px; color:var(--muted)}
+    footer{margin-top:12px; color:var(--muted); font-size:13px}
+    .lang-select{background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.03); padding:6px 8px; border-radius:8px}
+    .copy-btn{display:inline-flex; gap:8px; align-items:center}
+    @media(max-width:880px){
+      .result-wrap{grid-template-columns:1fr}
+      .preview{width:100%; height:160px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="application" aria-labelledby="title">
+    <header>
+      <div>
+        <h1 id="title">Image → Text (OCR)</h1>
+        <p>Image paste / upload / drag & drop — text extract kar ke aap copy kar sakte hain.</p>
+      </div>
+    </header>
+
+    <div class="controls" aria-hidden="false">
+      <label class="drop" id="dropzone" tabindex="0" aria-label="Drop image here or paste">
+        <div style="flex:1">
+          <strong id="drop-instruction">Drop image here, paste (Ctrl/Cmd+V), or click Upload</strong>
+          <small>Supported: PNG, JPEG, WebP. Max recommended size: ~10–15MB (mobile devices may be slower).</small>
+        </div>
+      </label>
+
+      <div class="actions" style="min-width:220px">
+        <div class="preview" id="preview">
+          <span class="small">No image</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <label class="btn" for="fileInput" role="button">Upload</label>
+          <input id="fileInput" type="file" accept="image/*">
+          <select id="lang" class="lang-select" title="OCR language">
+            <option value="eng" selected>English (eng)</option>
+            <option value="hin">Hindi (hin)</option>
+            <option value="spa">Spanish (spa)</option>
+            <option value="fra">French (fra)</option>
+            <option value="deu">German (deu)</option>
+            <!-- add more codes if desired -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px">
+      <div class="meta">OCR progress</div>
+      <div class="progress" aria-hidden="false"><i id="progressBar" style="width:0%"></i></div>
+      <div class="small" style="margin-top:6px" id="statusText">Koi task nahi chal raha.</div>
+    </div>
+
+    <div class="result-wrap" aria-live="polite">
+      <div>
+        <div style="display:flex; align-items:center; justify-content:space-between">
+          <div class="meta">Extracted text</div>
+          <div style="display:flex; gap:8px; align-items:center">
+            <button class="btn ghost copy-btn" id="copyBtn" title="Copy text">Copy</button>
+            <button class="btn ghost" id="clearBtn" title="Clear">Clear</button>
+          </div>
+        </div>
+        <textarea id="result" placeholder="Yahan extracted text dikhai dega..." aria-label="Extracted text"></textarea>
+      </div>
+
+      <aside>
+        <div class="meta">Image info</div>
+        <div style="background:#071425; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.03)">
+          <div class="small"><strong>Filename:</strong> <span id="infoName">—</span></div>
+          <div class="small"><strong>Size:</strong> <span id="infoSize">—</span></div>
+          <div class="small"><strong>Dimensions:</strong> <span id="infoDim">—</span></div>
+          <div class="small" style="margin-top:8px"><strong>Engine:</strong> Tesseract.js (client-side)</div>
+        </div>
+
+        <div style="margin-top:12px" class="meta">Options</div>
+        <div style="display:flex; gap:8px; flex-direction:column">
+          <button class="btn" id="ocrBtn">Start OCR</button>
+          <button class="btn ghost" id="downloadText">Download .txt</button>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Tip: large images take longer. For Hindi OCR, choose "Hindi (hin)" — Tesseract will download model the first time (network required).
+    </footer>
+  </div>
+
+  <!-- Tesseract.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.5/dist/tesseract.min.js"></script>
+
+  <script>
+    // Elements
+    const drop = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    const statusText = document.getElementById('statusText');
+    const progressBar = document.getElementById('progressBar');
+    const resultArea = document.getElementById('result');
+    const ocrBtn = document.getElementById('ocrBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const downloadText = document.getElementById('downloadText');
+    const infoName = document.getElementById('infoName');
+    const infoSize = document.getElementById('infoSize');
+    const infoDim = document.getElementById('infoDim');
+    const langSelect = document.getElementById('lang');
+
+    let currentImageBlob = null;
+    let currentImageObjectURL = null;
+
+    function resetProgress(){
+      progressBar.style.width = '0%';
+      statusText.textContent = 'Koi task nahi chal raha.';
+    }
+
+    function bytesToSize(bytes){
+      const units = ['B','KB','MB','GB'];
+      let i = 0;
+      while(bytes >= 1024 && i < units.length-1){ bytes /= 1024; i++ }
+      return Math.round(bytes*10)/10 + ' ' + units[i];
+    }
+
+    function showPreviewFromBlob(blob, filename){
+      if(currentImageObjectURL) URL.revokeObjectURL(currentImageObjectURL);
+      currentImageBlob = blob;
+      currentImageObjectURL = URL.createObjectURL(blob);
+      preview.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = currentImageObjectURL;
+      img.onload = function(){
+        infoDim.textContent = img.naturalWidth + ' × ' + img.naturalHeight;
+      }
+      preview.appendChild(img);
+      infoName.textContent = filename || 'image';
+      infoSize.textContent = bytesToSize(blob.size || 0);
+    }
+
+    function handleFile(file){
+      if(!file || !file.type.startsWith('image/')){
+        alert('Please provide an image file (PNG/JPEG/WebP/etc).');
+        return;
+      }
+      showPreviewFromBlob(file, file.name);
+      // auto-start OCR? we'll wait for user to click Start OCR for better control
+      statusText.textContent = 'Image ready. Click "Start OCR" to extract text.';
+    }
+
+    // Paste event
+    window.addEventListener('paste', (e) => {
+      const items = e.clipboardData && e.clipboardData.items;
+      if(!items) return;
+      for(const it of items){
+        if(it.type && it.type.startsWith('image/')){
+          const blob = it.getAsFile();
+          handleFile(blob);
+          e.preventDefault();
+          return;
+        }
+      }
+    });
+
+    // Drag & drop
+    ['dragenter','dragover'].forEach(ev => {
+      drop.addEventListener(ev, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        drop.classList.add('dragover');
+      });
+    });
+    ['dragleave','drop'].forEach(ev => {
+      drop.addEventListener(ev, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        drop.classList.remove('dragover');
+      });
+    });
+    drop.addEventListener('drop', (e)=>{
+      const dt = e.dataTransfer;
+      if(dt && dt.files && dt.files.length){
+        handleFile(dt.files[0]);
+      }
+    });
+
+    // Click -> file input
+    drop.addEventListener('click', ()=> fileInput.click());
+    fileInput.addEventListener('change', (e)=>{
+      if(e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+    });
+
+    // OCR using Tesseract.js
+    async function runOCR(){
+      if(!currentImageBlob){
+        alert('Please upload or paste an image first.');
+        return;
+      }
+      const lang = langSelect.value || 'eng';
+      resultArea.value = '';
+      statusText.textContent = 'Initializing OCR engine...';
+      progressBar.style.width = '2%';
+
+      try {
+        // Create worker
+        const { createWorker } = Tesseract;
+        const worker = createWorker({
+          logger: m => {
+            // m.status, m.progress
+            if(m.status && m.progress != undefined){
+              const perc = Math.min(100, Math.round(m.progress * 100));
+              progressBar.style.width = perc + '%';
+              statusText.textContent = `${m.status} — ${perc}%`;
+            } else if(m.status){
+              statusText.textContent = m.status;
+            }
+          }
+        });
+
+        await worker.load();
+        // load language (downloads traineddata first time)
+        statusText.textContent = `Loading language (${lang})...`;
+        await worker.loadLanguage(lang);
+        await worker.initialize(lang);
+
+        // recognize
+        statusText.textContent = 'Recognizing text...';
+        const imgURL = currentImageObjectURL;
+        const { data } = await worker.recognize(imgURL, { tessedit_pageseg_mode: Tesseract.PSM.AUTO });
+
+        // put result
+        resultArea.value = data && data.text ? data.text.trim() : '';
+        if(!resultArea.value) resultArea.value = '[No text detected]';
+        statusText.textContent = 'Done.';
+        progressBar.style.width = '100%';
+
+        await worker.terminate();
+      } catch (err) {
+        console.error(err);
+        alert('OCR failed: ' + (err.message || err));
+        statusText.textContent = 'Error during OCR.';
+        progressBar.style.width = '0%';
+      }
+    }
+
+    ocrBtn.addEventListener('click', runOCR);
+
+    // Copy
+    copyBtn.addEventListener('click', async ()=>{
+      const txt = resultArea.value || '';
+      if(!txt){ alert('Koi extracted text nahi hai to copy karne ke liye.'); return; }
+      try {
+        await navigator.clipboard.writeText(txt);
+        copyBtn.textContent = 'Copied ✓';
+        setTimeout(()=> copyBtn.textContent = 'Copy', 1400);
+      } catch (err) {
+        // fallback
+        resultArea.select();
+        document.execCommand('copy');
+        copyBtn.textContent = 'Copied ✓';
+        setTimeout(()=> copyBtn.textContent = 'Copy', 1400);
+      }
+    });
+
+    clearBtn.addEventListener('click', ()=>{
+      resultArea.value = '';
+      preview.innerHTML = '<span class="small">No image</span>';
+      infoName.textContent = '—'; infoSize.textContent = '—'; infoDim.textContent = '—';
+      if(currentImageObjectURL){ URL.revokeObjectURL(currentImageObjectURL); currentImageObjectURL = null; }
+      currentImageBlob = null;
+      resetProgress();
+    });
+
+    downloadText.addEventListener('click', ()=>{
+      const txt = resultArea.value || '';
+      if(!txt){ alert('No text to download.'); return; }
+      const blob = new Blob([txt], { type:'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'extracted-text.txt';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Keyboard: ctrl+v paste is handled by paste event. Also support Enter on drop zone to open file picker
+    drop.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' ') { fileInput.click(); e.preventDefault(); }
+    });
+
+    // initial reset
+    resetProgress();
+  </script>
+</body>
+</html>

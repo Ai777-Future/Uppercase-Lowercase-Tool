@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GYM – Be Strong</title>
+
+<!-- Fonts + Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0e0e0e;
+  --card:#161616;
+  --muted:#9a9a9a;
+  --white:#fff;
+  --accent:#ff6a00;
+  --accent-2:#ff7d1a;
+  --soft:#242424;
+  --border:#2b2b2b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;scroll-behavior:smooth}
+h1,h2,h3,h4,h5{font-family:Oswald,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;letter-spacing:.5px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ===== NAVBAR ===== */
+.nav{
+  position:fixed;inset-inline:0;top:0;height:74px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;background:rgba(10,10,10,.8);backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid #111;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;font-family:Oswald;font-weight:700;
+  font-size:28px;letter-spacing:1px
+}
+.brand i{color:var(--accent);font-size:24px}
+.brand b{color:#fff}
+.brand em{color:var(--accent);font-style:normal}
+.nav-center{display:flex;gap:28px}
+.nav-center a{font-weight:600;font-size:14px;opacity:.85;text-transform:uppercase}
+.nav-center a.active,.nav-center a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.icon-btn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#1a1a1a;border:1px solid #222;opacity:.9}
+.icon-btn:hover{background:#222}
+@media (max-width:980px){
+  .nav-center{display:none}
+}
+
+/* ===== HERO SLIDER ===== */
+.hero{
+  position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;
+}
+.slides{position:absolute;inset:0}
+.slide{
+  position:absolute;inset:0;opacity:0;transition:opacity .6s ease;will-change:opacity
+}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+/* angled dark strip on right like screenshot */
+.slide::after{
+  content:"";position:absolute;right:-12vw;top:0;height:100%;width:55vw;
+  background:linear-gradient(100deg, rgba(20,20,20,.75), rgba(20,20,20,.92));
+  clip-path:polygon(18% 0,100% 0,100% 100%,0% 100%);
+}
+
+/* hero content */
+.hero-inner{
+  position:relative;z-index:2;max-width:680px;margin-left:auto;margin-right:7vw;
+}
+.kicker{letter-spacing:.35em;font-size:12px;font-weight:600;color:#cfcfcf;margin-bottom:12px}
+.hero h1{
+  font-size:76px;line-height:.98;margin:0 0 16px;
+  text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.4)
+}
+.hero h1 .accent{color:var(--accent)}
+.hero p{color:#d5d5d5;font-size:16px;max-width:520px;margin:0 0 26px}
+.cta{display:inline-block;background:var(--accent);padding:14px 28px;border:none;border-radius:4px;color:#fff;font-weight:700;letter-spacing:.5px}
+.cta:hover{background:var(--accent-2)}
+/* slider arrows */
+.arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;
+  border-radius:4px;background:rgba(0,0,0,.35);display:grid;place-items:center;border:1px solid rgba(255,255,255,.15);cursor:pointer
+}
+.arrow:hover{background:rgba(0,0,0,.55)}
+.arrow.left{left:22px}
+.arrow.right{right:22px}
+
+/* ===== SECTION WRAPPER ===== */
+.section{padding:90px 22px}
+.container{max-width:1180px;margin:0 auto}
+
+/* ===== WHY CHOOSE US (icons row) ===== */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.feature{
+  background:var(--card);border:1px solid var(--border);padding:28px;border-radius:12px; text-align:center
+}
+.feature .ico{
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;
+  background:#222;color:var(--accent);font-size:28px;border:1px solid #2b2b2b
+}
+.kicker2{text-align:center;color:var(--accent);font-weight:700;letter-spacing:.25em;margin-bottom:8px}
+.h2center{text-align:center;font-size:36px;margin:0 0 40px;text-transform:uppercase}
+.feature h3{font-family:Oswald;font-size:20px;margin:6px 0 8px}
+.feature p{color:#bdbdbd;font-size:14px;line-height:1.7}
+@media (max-width:980px){ .features{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .features{grid-template-columns:1fr} }
+
+/* ===== CLASSES GRID ===== */
+.classes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  position:relative;background:#111;border:1px solid #222;border-radius:8px;overflow:hidden;min-height:220px
+}
+.card img{height:220px;width:100%;object-fit:cover;filter:brightness(.9)}
+.card .badge{position:absolute;left:16px;bottom:56px;color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.card h4{
+  position:absolute;left:16px;bottom:16px;margin:0;font-size:22px;line-height:1.1;text-transform:uppercase
+}
+.card .go{position:absolute;right:16px;bottom:16px;width:40px;height:40px;border-radius:6px;display:grid;place-items:center;background:rgba(0,0,0,.4);border:1px solid #2b2b2b}
+.card:hover img{transform:scale(1.04);transition:.45s ease}
+.card:hover .go{background:var(--accent)}
+@media (max-width:980px){ .classes{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .classes{grid-template-columns:1fr} }
+
+/* ===== REGISTRATION BANNER ===== */
+.banner{
+  position:relative;border:1px solid #222;border-radius:10px;overflow:hidden;min-height:280px
+}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
+.banner .content{position:relative;z-index:1;display:grid;place-items:center;padding:60px;text-align:center}
+.banner h2{font-size:46px;margin:0 0 8px;text-transform:uppercase}
+.banner p{color:#d6d6d6;margin:0 0 18px}
+.banner .ghost{
+  background:transparent;border:2px solid var(--accent);color:#fff;padding:12px 22px;border-radius:4px;font-weight:700;text-transform:uppercase;letter-spacing:.5px
+}
+.banner .ghost:hover{background:var(--accent)}
+
+/* ===== PRICING ===== */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
+.plan{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;position:relative;
+  transform:skewY(-2deg)
+}
+.plan .inner{transform:skewY(2deg)}
+.plan h3{margin:10px 0 8px;font-size:28px}
+.price{font-family:Oswald;font-size:54px;color:var(--accent);margin:12px 0 4px}
+.small{font-size:12px;color:#cfcfcf;text-transform:uppercase;letter-spacing:.2em}
+.list{margin:16px 0 22px;color:#d1d1d1}
+.list li{list-style:none;margin:8px 0;padding-left:0}
+.plan .btn{display:inline-block;background:#333;border:1px solid #3e3e3e;padding:12px 20px;border-radius:6px;font-weight:700}
+.plan .btn:hover{background:#3b3b3b}
+.plan.featured{background:#1b1b1b;border-color:#3a3a3a;box-shadow:0 10px 50px rgba(0,0,0,.35)}
+.plan.featured .btn{background:var(--accent);border-color:var(--accent);color:#101010}
+.plan.featured .btn:hover{background:var(--accent-2)}
+@media (max-width:980px){ .pricing{grid-template-columns:1fr} .plan{transform:none}.plan .inner{transform:none} }
+
+/* ===== GALLERY ===== */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px}
+.gallery img{height:280px;width:100%;object-fit:cover;border-radius:6px;filter:brightness(.85)}
+.gallery .wide{grid-column:span 2}
+@media (max-width:980px){ .gallery{grid-template-columns:1fr 1fr}.gallery img{height:220px}.gallery .wide{grid-column:span 2} }
+@media (max-width:560px){ .gallery{grid-template-columns:1fr}.gallery img{height:220px} }
+
+/* ===== TRAINERS SLIDER ===== */
+.trainers{display:flex;gap:22px;overflow:hidden}
+.trainer{min-width:33.33%;background:#2b2b2b1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px}
+.trainer img{width:100%;height:340px;object-fit:cover;border-radius:4px;background:#555}
+.trainer h5{text-align:center;margin:12px 0 6px;font-size:18px}
+.t-controls{display:flex;gap:10px;justify-content:flex-end;margin:10px 0}
+.tbtn{width:40px;height:36px;border:1px solid #333;background:#1b1b1b;border-radius:6px;color:#fff}
+.tbtn:hover{background:#252525}
+@media (max-width:980px){ .trainer{min-width:80%} }
+
+/* ===== CONTACT STRIP ===== */
+.strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;background:#0b0b0b;border-top:1px solid #151515;border-bottom:1px solid #151515;
+  padding:36px 22px
+}
+.box{display:flex;gap:16px;align-items:center}
+.round{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#101010;font-size:20px}
+.box p{margin:0;color:#dfdfdf}
+.box small{display:block;color:#a7a7a7}
+@media (max-width:840px){ .strip{grid-template-columns:1fr} }
+
+/* ===== FOOTER ===== */
+footer{padding:48px 22px 28px;background:#080808}
+.footer-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:36px}
+.f-logo{display:flex;align-items:center;gap:10px;font-size:26px;font-family:Oswald}
+.f-logo i{color:var(--accent)}
+.f-col h6{font-size:16px;margin:0 0 12px}
+.f-col ul{margin:0;padding:0}
+.f-col li{list-style:none;margin:8px 0;color:#cfcfcf}
+.f-col a{color:#cfcfcf}
+.f-col a:hover{color:#fff}
+.copy{max-width:1180px;margin:22px auto 0;color:#a7a7a7;border-top:1px solid #141414;padding-top:16px;font-size:13px}
+.social a{margin-right:10px;opacity:.85}
+.social a:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a class="brand" href="#">
+    <i class="fa-solid fa-dumbbell"></i><b>GY</b><em>M</em>
+  </a>
+
+  <nav class="nav-center">
+    <a class="active" href="#">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#classes">Classes</a>
+    <a href="#services">Services</a>
+    <a href="#team">Our Team</a>
+    <a href="#pages">Pages</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="nav-right">
+    <a class="icon-btn" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+    <a class="icon-btn" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a class="icon-btn" href="#"><i class="fa-brands fa-twitter"></i></a>
+    <a class="icon-btn" href="#"><i class="fa-brands fa-youtube"></i></a>
+    <a class="icon-btn" href="#"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</header>
+
+<!-- HERO SLIDER -->
+<section class="hero" id="home">
+  <div class="slides">
+    <div class="slide active">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1920&auto=format&fit=crop" alt="">
+    </div>
+    <!-- (add more slides if you want; arrows already work) -->
+  </div>
+
+  <button class="arrow left" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="arrow right" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+
+  <div class="hero-inner">
+    <div class="kicker">SHAPE YOUR BODY</div>
+    <h1>BE <span class="accent">STRONG</span><br>TRAINING HARD</h1>
+    <p>Your limits are meant to be broken. Join our community and push further every day.</p>
+    <a class="cta" href="#pricing">GET INFO</a>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="kicker2">WHY CHOOSE US?</div>
+    <h2 class="h2center">PUSH YOUR LIMITS FORWARD</h2>
+
+    <div class="features">
+      <div class="feature">
+        <div class="ico"><i class="fa-solid fa-person-running"></i></div>
+        <h3>Modern equipment</h3>
+        <p>Top-tier machines and free weights designed for performance and safety.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><i class="fa-solid fa-apple-whole"></i></div>
+        <h3>Healthy nutrition plan</h3>
+        <p>Meal guidance created by certified coaches to fuel your goals.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><i class="fa-solid fa-dumbbell"></i></div>
+        <h3>Professional training</h3>
+        <p>Structured programs tailored for strength, endurance, and mobility.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>Unique to your needs</h3>
+        <p>Personalized plans that adapt to your progress and lifestyle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSES GRID -->
+<section class="section" id="classes">
+  <div class="container">
+    <div class="kicker2">OUR CLASSES</div>
+    <h2 class="h2center">WHAT WE CAN OFFER</h2>
+
+    <div class="classes">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1599058917727-9818f8b8e512?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="badge">STRENGTH</div>
+        <h4>Weightlifting</h4>
+        <div class="go"><i class="fa-solid fa-chevron-right"></i></div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="badge">CARDIO</div>
+        <h4>Indoor Cycling</h4>
+        <div class="go"><i class="fa-solid fa-chevron-right"></i></div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="badge">STRENGTH</div>
+        <h4>Kettlebell Power</h4>
+        <div class="go"><i class="fa-solid fa-chevron-right"></i></div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1571732084786-7e9a6c67a66b?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="badge">CARDIO</div>
+        <h4>Indoor Cycling</h4>
+        <div class="go"><i class="fa-solid fa-chevron-right"></i></div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1560275619-466f0de1cd47?q=80&w=1200&auto=format&fit=crop" alt="">
+        <div class="badge">TRAINING</div>
+        <h4>Boxing</h4>
+        <div class="go"><i class="fa-solid fa-chevron-right"></i></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION BANNER -->
+<section class="section" id="services" style="padding-top:30px">
+  <div class="container">
+    <div class="banner">
+      <img src="https://images.unsplash.com/photo-1517341721413-4f458fb9a99a?q=80&w=1800&auto=format&fit=crop" alt="">
+      <div class="content">
+        <h2>Registration now to get more deals</h2>
+        <p>Where health, beauty and fitness meet.</p>
+        <a class="ghost" href="#contact">Appointment</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="kicker2">OUR PLAN</div>
+    <h2 class="h2center">CHOOSE YOUR PRICING PLAN</h2>
+
+    <div class="pricing">
+      <div class="plan">
+        <div class="inner">
+          <h3>Class drop‑in</h3>
+          <div class="price">$ 39<span class="small">.0</span></div>
+          <div class="small">Single class</div>
+          <ul class="list">
+            <li>Free riding</li><li>Unlimited equipments</li><li>Personal trainer</li>
+            <li>Weight losing classes</li><li>Month to mouth</li><li>No time restriction</li>
+          </ul>
+          <a class="btn" href="#">Enroll now</a>
+        </div>
+      </div>
+
+      <div class="plan featured">
+        <div class="inner">
+          <h3>12 Month unlimited</h3>
+          <div class="price">$ 99<span class="small">.0</span></div>
+          <div class="small">Single class</div>
+          <ul class="list">
+            <li>Free riding</li><li>Unlimited equipments</li><li>Personal trainer</li>
+            <li>Weight losing classes</li><li>Month to mouth</li><li>No time restriction</li>
+          </ul>
+          <a class="btn" href="#">Enroll now</a>
+        </div>
+      </div>
+
+      <div class="plan">
+        <div class="inner">
+          <h3>6 Month unlimited</h3>
+          <div class="price">$ 59<span class="small">.0</span></div>
+          <div class="small">Single class</div>
+          <ul class="list">
+            <li>Free riding</li><li>Unlimited equipments</li><li>Personal trainer</li>
+            <li>Weight losing classes</li><li>Month to mouth</li><li>No time restriction</li>
+          </ul>
+          <a class="btn" href="#">Enroll now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY MOSAIC -->
+<section class="section" style="padding-top:40px">
+  <div class="container">
+    <div class="gallery">
+      <img class="wide" src="https://images.unsplash.com/photo-1517341721413-4f458fb9a99a?q=80&w=1600&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1546484959-f9a53db89f09?q=80&w=1200&auto=format&fit=crop" alt="">
+
+      <img src="https://images.unsplash.com/photo-1534367610401-9f55db7f1a7f?q=80&w=1200&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=1200&auto=format&fit=crop" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- TEAM / TRAINERS -->
+<section class="section" id="team">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div>
+        <div class="kicker2">OUR TEAM</div>
+        <h2 style="margin:0;text-transform:uppercase">Train with experts</h2>
+      </div>
+      <div class="t-controls">
+        <button class="tbtn" id="tPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="tbtn" id="tNext"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div class="trainers" id="trainers">
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1200&auto=format&fit=crop" alt="">
+        <h5>Alex Morgan</h5>
+      </div>
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?q=80&w=1200&auto=format&fit=crop" alt="">
+        <h5>Jade Rivera</h5>
+      </div>
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1594737625785-c6683fc4b6df?q=80&w=1200&auto=format&fit=crop" alt="">
+        <h5>Sara Torres</h5>
+      </div>
+      <div class="trainer">
+        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=1200&auto=format&fit=crop" alt="">
+        <h5>Chris Lee</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP + FOOTER -->
+<section class="strip" id="contact">
+  <div class="container" style="max-width:1180px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+    <div class="box">
+      <div class="round"><i class="fa-solid fa-location-dot"></i></div>
+      <p>333 Middle Winchendon Rd, Rindge, NH 03461 <small>Find us on maps</small></p>
+    </div>
+    <div class="box">
+      <div class="round"><i class="fa-solid fa-phone"></i></div>
+      <p>125-711-811 | 125-668-886 <small>Mon–Sat 6:00–22:00</small></p>
+    </div>
+    <div class="box">
+      <div class="round"><i class="fa-solid fa-envelope"></i></div>
+      <p>support.gymcenter@gmail.com <small>We reply within 24h</small></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo"><i class="fa-solid fa-dumbbell"></i><b>GYM</b></div>
+      <p style="color:#cfcfcf;margin-top:10px">Helping you build strength, confidence and lasting healthy habits.</p>
+      <div class="social" style="margin-top:10px">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-regular fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="f-col">
+      <h6>Useful links</h6>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h6>Support</h6>
+      <ul>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">My account</a></li>
+        <li><a href="#">Subscribe</a></li>
+        <li><a href="#">Help center</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h6>Tips & Guides</h6>
+      <ul>
+        <li><a href="#">Physical fitness may help prevent depression, anxiety</a></li>
+        <li><a href="#">Best exercise to lose belly fat and tone up</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="copy">Copyright ©2025 All rights reserved | Template recreated with ❤️ for you.</div>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
+// simple hero slider hooks (ready for multiple slides)
+const slides = [...document.querySelectorAll('.slide')];
+let i = 0;
+const go = dir => {
+  slides[i].classList.remove('active');
+  i = (i + dir + slides.length) % slides.length;
+  slides[i].classList.add('active');
+};
+document.querySelector('.arrow.left').onclick = () => go(-1);
+document.querySelector('.arrow.right').onclick = () => go(1);
+
+// trainers carousel (basic)
+const rail = document.getElementById('trainers');
+let offset = 0;
+document.getElementById('tPrev').onclick = () => { offset = Math.min(offset + 1, 0); rail.style.transform = `translateX(${offset*100}%)`; rail.style.transition='transform .4s ease';}
+document.getElementById('tNext').onclick = () => { offset = Math.max(offset - 1, -1); rail.style.transform = `translateX(${offset*100}%)`; rail.style.transition='transform .4s ease';}
+</script>
+</body>
+</html>

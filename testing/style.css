@@ -1,0 +1,114 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #0072ff;
+}
+body.dark {
+  --bg-color: #111111;
+  --text-color: #ffffff;
+}
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 0;
+}
+header {
+  background: var(--text-color);
+  color: var(--bg-color);
+  padding: 15px 0;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+nav a {
+  text-decoration: none;
+  color: var(--bg-color);
+}
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.hero {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+.btn {
+  background: white;
+  color: #0072ff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.services {
+  display: flex;
+  gap: 20px;
+}
+.service-card {
+  flex: 1;
+  background: #eee;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+.gallery .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+form input, form textarea {
+  padding: 10px;
+  font-size: 1em;
+}
+form button {
+  background: var(--accent-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: white;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LectureWala Stats</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+    }
+
+    .stats-section {
+      background: linear-gradient(to right, #e6f4f3, #fff4d4);
+      padding: 60px 20px;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .stat-box {
+      flex: 1;
+      padding: 30px 20px;
+      background: #ffffffd9;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      z-index: 1;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-6px);
+    }
+
+    /* Background animation overlay */
+    .stat-box::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(270deg, #c0f4ff, #fef3c7, #d4fc79, #96e6a1);
+      background-size: 600% 600%;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    .stat-box:hover::before {
+  animation: flowBg 20s ease infinite;  /* ⬅ slower now */
+  opacity: 1;
+}
+
+
+    @keyframes flowBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .stat-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1a1a1a;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-label {
+      font-size: 15px;
+      color: #555;
+      margin-top: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .stats-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="stats-section">
+  <div class="stats-container">
+    <div class="stat-box">
+      <div class="stat-icon">🎓</div>
+      <div class="stat-number">24k+</div>
+      <div class="stat-label">Total Students Enrolled</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-icon">💻</div>
+      <div class="stat-number">3M+</div>
+      <div class="stat-label">Total Video Lessons</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-icon">📅</div>
+      <div class="stat-number">2.5k+</div>
+      <div class="stat-label">Daily Live Classes</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-icon">📝</div>
+      <div class="stat-number">75+</div>
+      <div class="stat-label">Exam Categories</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

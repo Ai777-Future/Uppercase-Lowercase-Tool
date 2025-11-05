@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturewala</title>
+    <link rel="stylesheet" href="/js/javascriptpractice/completed projects/Lecturewala/lw..css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { 
+    margin: 0; 
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #857c7c, #888686); /* Background gradient */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #111;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: white;
+}
+
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+    padding: 10px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.icon:hover {
+    color: #ccc;
+}
+
+nav {
+    background-color: #222;
+    padding: 10px 0;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    margin: 0 20px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.nav-list a:hover {
+    color: #ccc;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust height as needed */
+    position: relative;
+    margin-top: 50px;
+}
+
+.glass-background {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%; /* Adjust width as needed */
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Glass effect background */
+    backdrop-filter: blur(10px); /* Glass effect */
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 1s ease;
+    background-size: cover;
+    background-position: center;
+}
+
+.glass-background:hover {
+    box-shadow: 0 0 40px rgba(25, 200, 212, 0.8), 0 0 80px rgba(0, 161, 224, 0.5); 
+}
+
+.product {
+    position: relative;
+    font-size: 3em; 
+    color: #00000000;
+    margin: 0 20px;
+    text-align: center;
+    backdrop-filter: blur(5px); 
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+    transition: all 0.3s ease; 
+}
+
+.product:hover {
+    background: linear-gradient(135deg, #ff0080, #ff8c00); 
+    color: #fff; 
+    box-shadow: 0 0 40px rgba(19, 131, 235, 0.8), 0 0 80px rgba(2, 223, 252, 0.5);
+    transform: scale(1.05);
+    transition: all 1s ease;
+}
+
+.details {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px); 
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto; 
+    width: 80%; 
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0; 
+    transform: translateY(20px); 
+    animation: fadeInUp 1s forwards;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.details-content {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.details-content h2 {
+    font-size: 2em;
+    color: #ff0080; 
+    margin: 0;
+}
+
+.details-content p {
+    font-size: 1.2em;
+    color: #fff; 
+    margin: 5px 0;
+}
+
+.details-content h3 {
+    font-size: 1.5em;
+    color: #ff8c00; 
+    margin: 10px 0 0;
+}
+.shop-by-category {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px); 
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto; 
+    width: 80%; 
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.shop-by-category h2 {
+    font-size: 2em;
+    color: #ff0080; 
+    margin-bottom: 20px;
+}
+
+.category {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+}
+
+.category-item {
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 100px; 
+    padding: 20px;
+    margin: 10px;
+    width: 200px; 
+    text-align: center;
+    transition: all 0.3s ease; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.category-item:hover {
+    background: rgba(0, 195, 255, 0.5); 
+    box-shadow: 0 0 20px rgba(2, 223, 39, 30), 0 0 40px rgba(0, 255, 64, 50);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Lecturewala</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-box">
+            <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="icons">
+            <a href="#" class="icon"><i class="fas fa-user"></i></a>
+            <a href="#" class="icon"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+    
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Faculty</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">More</a></li>
+        </ul>
+    </nav>
+
+    <section class="banner">
+        <div class="glass-background" style="background-image: url('/img/NEW.jpeg');">
+            <div class="product">CA</div>
+            <div class="product">CMA</div>
+            <div class="product">CS</div>
+        </div>
+    </section>
+    <section class="details">
+        <div class="details-content">
+            <h2>🚚 Super Fast Delivery</h2>
+            <p>50000+ Happy Deliveries.</p>
+            <p>All courses available at best price</p>
+            <h3>Offer up to 50% Off</h3>
+        </div>
+    </section>
+    <section class="shop-by-category">
+        <h2>Shop by Category</h2>
+        <div class="category">
+            <div class="category-item">
+                <h3>CA</h3>
+                <p>CA Classes Online</p>
+            </div>
+            <div class="category-item">
+                <h3>CMA</h3>
+                <p>CMA Classes Online</p>
+            </div>
+            <div class="category-item">
+                <h3>CS</h3>
+                <p>CS Classes Online</p>
+            </div>
+            <div class="category-item">
+                <h3>Global Courses</h3>
+                <p>Global Courses</p>
+            </div>
+            <div class="category-item">
+                <h3>Other Courses</h3>
+                <p>Other Courses</p>
+            </div>
+            <div class="category-item">
+                <h3>Books & Test Series</h3>
+                <p>Books & Test Series</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- https://media.istockphoto.com/id/485371557/photo/twilight-at-spirit-island.jpg?s=612x612&w=0&k=20&c=FSGliJ4EKFP70Yjpzso0HfRR4WwflC6GKfl4F3Hj7fk= -->

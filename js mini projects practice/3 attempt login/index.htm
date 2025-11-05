@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 attempt login system</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+
+        }
+
+        .form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        input {
+            padding: 5px 25px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 5px 35px;
+            border: 1px solid black;
+            background-color: chartreuse;
+        }
+
+        p {
+            color: cyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <input type="username" placeholder="enter your username" id="UserInput">
+        <input type="password" placeholder="enter your password" id="password">
+        <button id="Login">LOGIN</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const user = document.getElementById("UserInput");
+        const passcode = document.getElementById("password");
+        const btn = document.getElementById("Login");
+        const result = document.getElementById("result");
+
+        let displayName = "sandeep singh";
+        let username = "sandeep";
+        let password = "1125";
+        let attempt = 3;
+
+        btn.addEventListener("click", function () {
+            let person = user.value;
+            let code = passcode.value;
+
+            if (person === username && code === password) {
+                
+                result.innerHTML = "✅ Login Succesful";
+
+            }
+            else if(person === "" && code === password){
+                result.innerHTML = "please enter your username first"
+
+            }
+            else if(person === username && code === ""){
+                result.innerHTML = "please enter your password";
+
+            }
+
+            else if(person === "" && code === ""){
+                result.innerHTML = "please enter your username and password";
+            }
+            else {
+                attempt--;
+                if (attempt > 0) {
+                    result.innerHTML = `⚠️ invalid attempt you have only ${attempt} attempt's left`;
+
+                }
+                else{
+                    result.innerHTML =  `${displayName}🚫your account is blocked`;
+                    btn.innerHTML = "DISABLED";
+                    btn.disabled = true;
+                }
+
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functon testing (random name greeting message)</title>
+    <style>
+        *{
+
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        body{
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        input{
+            padding: 15px 25px;
+            border-bottom-left-radius: 25px;
+            border-top-left-radius: 25px;
+        }
+
+        button{
+            padding: 15px 35px;
+            border-radius: 25px;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="enter your name" id="blank">
+    <button id="Button">Greeting</button>
+    <p id="result"></p>
+    
+
+    <script>
+        const key = document.getElementById("blank");
+        const btn = document.getElementById("Button");
+        const result = document.getElementById("result");
+
+        const name = "";
+        btn.addEventListener("click", function(){
+            let name = key.value;
+            result.innerHTML = "hlw "+ name + " welcome to the digital world"
+
+            
+        })
+        
+
+
+
+    </script>
+</body>
+</html>

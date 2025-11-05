@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One More Grid Exercise which is given by code with harry</title>
+    <style>
+        .cont {
+            /* border: 1px solid black; */
+            height: 95vh;
+            display: grid;
+            grid-template-areas: "nav nav nav"
+                "box1 box2 box3"
+                "box4 box5 box6"
+                "box7 box8 box9"
+                "footer footer footer";
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+
+        }
+
+        .item {
+            border: 2px solid red;
+            /* width: 55px; */
+            /* height: 55px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .item-1 {
+            grid-area: nav;
+
+        }
+
+        .item-2 {
+            grid-area: box1;
+            
+        }
+
+        .item-3 {
+            grid-area: box2;
+        }
+
+        .item-4 {
+            grid-area: box3;
+        }
+
+        .item-5 {
+            grid-area: box4;
+        }
+
+        .item-6 {
+            grid-area: box5;
+        }
+
+        .item-7 {
+            grid-area: box6;
+        }
+
+        .item-8 {
+            grid-area: box7;
+        }
+
+        .item-9 {
+            grid-area: box8;
+        }
+
+        .item-10 {
+            grid-area: box9;
+        }
+
+        .item-11 {
+            grid-area: footer
+        }
+
+        ;
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <div class="item item-1">NAV</div>
+        <div class="item item-2">BOX1</div>
+        <div class="item item-3">BOX2</div>
+        <div class="item item-4">BOX3</div>
+        <div class="item item-5">BOX4</div>
+        <div class="item item-6">BOX5</div>
+        <div class="item item-7">BOX6</div>
+        <div class="item item-8">BOX7</div>
+        <div class="item item-9">BOX8</div>
+        <div class="item item-10">BOX9</div>
+        <div class="item item-11">FOOTER</div>
+    </div>
+
+</body>
+
+</html>

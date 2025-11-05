@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coffe machine process with js</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            height: 100vh;
+            background-color: black;
+            color: white;
+
+        }
+
+        .cont {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+
+        }
+
+        input {
+            padding: 10px 55px;
+            border-radius: 15px;
+
+        }
+
+        button {
+            padding: 10px 55px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cont">
+        <input type="text" placeholder="coffe type e.g. 'black', 'white'" id="user">
+        <button id="button">Make Coffe</button>
+        <div>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        const value = document.getElementById("user");
+        const button = document.getElementById("button");
+        const result = document.getElementById("result");
+
+        button.addEventListener("click", function () {
+            let type = value.value;
+            type = type.toLowerCase();
+
+            console.log("Machine chalu ho gayi hai");
+            console.log("Pani garam ho raha hai");
+            console.log("Coffee powder mix kar raha hu");
+            console.log("Sugar add kar raha hu");
+
+            if(type === ""){
+                console.log("please enter a valid value")
+
+            }
+            else if(type === "black"){
+                console.log("no milk added");
+
+            }
+            else{
+                console.log("milk added");
+            }
+            console.log("Your coffee is ready");
+            let order = "Your " + type + " coffee is ready";
+            result.innerHTML = order; // output screen pe dikhayega
+        });
+
+    </script>
+</body>
+
+</html>

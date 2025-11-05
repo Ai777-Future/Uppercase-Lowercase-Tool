@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  /* height: 1000vh; */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  background: black;
+  color: #ffffff;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.coupon {
+  background-color: #916242;
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  list-style: none;
+  position: relative;
+  right: 126px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  text-decoration: und;
+}
+
+.logo img {
+  height: 150px;
+  width: auto;
+  right: 130px;
+  position: relative;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+section {
+  margin: 250px auto;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.para > h3 {
+  font-size: 3em;
+}
+
+.para > p {
+  font-size: 2em;
+  width: 35vw;
+  color: antiquewhite;
+}
+
+.para > .only {
+  font-size: 1em;
+  width: 40vw;
+  margin-left: 21px;
+}
+
+.para > .head {
+  font-size: 3em;
+  width: 50vw;
+  margin-left: 21px;
+}
+.about-img > img {
+  width: 48vw;
+}
+
+footer {
+  background: url("https://t3.ftcdn.net/jpg/01/84/63/08/360_F_184630858_k4zGVxp7vJGszuvNlZbCv09ZqQ0JKs4u.jpg");
+  width: 100%;
+  height: 750px;
+  /* margin-top: 100px; */
+  padding: 50px 20px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.foot-back {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-center img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.slogan-line {
+  margin-top: 35px;
+  font-size: 20px;
+  word-spacing: 3px;
+}
+
+.general {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.add {
+  width: 250px;
+  line-height: 2;
+  text-align: start;
+}
+
+.second h5 {
+  font-size: larger;
+  margin-bottom: 12px;
+}
+
+.second ul {
+  list-style: none;
+  text-align: start;
+}
+
+.second ul li {
+  line-height: 2;
+}
+
+.thiird {
+  font-size: 25px;
+  width: 500px;
+}
+
+.third input {
+  padding: 15px 35px;
+  border-top-left-radius: 35px;
+  border-bottom-left-radius: 35px;
+  background: transparent;
+  border: 1px solid white;
+  color: rgb(255, 7, 7);
+  font-weight: 600;
+}
+
+.third button {
+  padding: 15px 25px;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+  position: relative;
+  right: 9px;
+  background-color: rgb(13, 208, 208);
+}
+
+.social-media {
+  margin-top: 60px;
+}
+
+.social-media .fa-brands {
+  margin: 0px 15px;
+}
+
+.last {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 35px;
+}
+
+.last ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+  gap: 20px;
+}
+
+.last ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.last ul li a:hover {
+  text-decoration: underline;
+}
+
+.final {
+  margin-top: 50px;
+}
+
+.app-section {
+  background: url("https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-2851.jpg?uid=R143826622&ga=GA1.1.698039469.1749403346&semt=ais_items_boosted&w=740");
+  width: 100%;
+  height: 750px;
+  margin-top: -250px;
+  padding: 50px 20px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* position: relative; */
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.app-btn > button {
+  padding: 18px 38px;
+  border-radius: 21px;
+  margin-top: 25px;
+  background: #ffffff;
+  margin-left: 150px;
+  border: none;
+  font-size: larger;
+  transition: 1s ease;
+}
+
+.app-btn > button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.app-heading {
+  width: 31vw;
+  font-size: 30px;
+  margin-left: 150px;
+}
+
+.app-heading > span {
+  font-weight: 300;
+}
+
+.models > img {
+  width: 24vw;
+  margin-left: 24em;
+}
+
+.first {
+  background: url("https://img.freepik.com/free-photo/aesthetic-background-with-pink-neon-led-light-effect_53876-103788.jpg?uid=R143826622&ga=GA1.1.698039469.1749403346&semt=ais_items_boosted&w=740");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.second-first {
+  background: url("https://img.freepik.com/premium-photo/vector-background-with-line-shapes-creative-geometric-illustration-marble-style-with-gradient-elegant-pattern-art_824086-1998.jpg?uid=R143826622&ga=GA1.1.698039469.1749403346&semt=ais_items_boosted&w=740");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.second-last {
+  background: url("https://img.freepik.com/premium-photo/abstract-colorful-background-twisted-gradient-wavy-twirls-patterns-motion-digital-wallpaper_636456-1297.jpg?uid=R143826622&ga=GA1.1.698039469.1749403346&semt=ais_items_boosted&w=740");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.four {
+  background: url("https://img.freepik.com/free-vector/abstract-background-with-digital-cyber-particles-design_1048-15577.jpg?uid=R143826622&ga=GA1.1.698039469.1749403346&semt=ais_items_boosted&w=740");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

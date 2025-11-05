@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>age check </title>
+  <style>
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <input type="number" placeholder="enter your age" id="age">
+  <button id="mybtn" onclick="checkAge()">Check</button>
+  <script>
+    function checkAge(){
+      let check = document.getElementById("age").value
+      if(check>=18){
+        alert("you are eligible for vote");
+
+      }else{
+        alert("you are not eligible for vote");
+      }
+    }
+  </script>
+</body>
+</html>
