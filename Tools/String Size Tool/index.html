@@ -114,11 +114,9 @@
 
         <div class="sepcial-box">
 
-            <video src="./assests/161478-823541690_small.mp4" autoplay loop muted></video>
-            <audio src="./assests/song.mp3" loop></audio>
+<video id="secretVideo" src="./assets/161478-823541690_small.mp4" autoplay loop muted style="display:none;"></video>
+<audio id="secretAudio" src="./assets/song.mp3" loop></audio>
 
-            <video src="./assets/161478-823541690_small.mp4" autoplay loop></video>
-            <audio src="./assets/song.mp3" muted loop></audio>
 
 
 
@@ -137,8 +135,9 @@
         const icon = document.getElementById("copy");
         const box = document.querySelector(".box");
         const four = document.getElementById("btn-4");
-        const video = document.querySelector("video");
-        const audio = document.querySelector("audio");
+        const video = document.getElementById("secretVideo");
+        const audio = document.getElementById("secretAudio");
+
 
 
 
